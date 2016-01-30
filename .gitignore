@@ -1,0 +1,4 @@
+node_modules
+dist
+*.sublime-*
+env/prod-config.js

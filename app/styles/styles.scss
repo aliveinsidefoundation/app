@@ -1,0 +1,20 @@
+@import "./_reset.scss";
+
+/*
+ * Basics
+ */
+body {
+	font-family: 'Signika', sans-serif;
+}
+
+.wrap-container {
+	width: 100%;
+	max-width: 1027px;
+	margin: 0 auto;
+  overflow: hidden;
+}
+
+.button {
+	border-radius: 100px;
+  	cursor: pointer;
+}

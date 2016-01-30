@@ -1,0 +1,163 @@
+body {
+	background: #FAFAFA;
+}
+
+.questionnaire-section {
+	margin: 0 0 100px 0;
+
+	.step-title {
+		font-family: CoveredByYourGrace;
+	    font-size: 36px;
+	    color: #08AAB3;
+	    line-height: 100px;
+	    display: block;
+	    text-align: center;
+	    width: 100%;
+	}
+}
+
+.form-input {
+	margin: 20px 0;
+
+	label {
+		font-family: Signika-Regular;
+		font-size: 16px;
+		color: #585858;
+		line-height: 36px;
+	}
+
+	input {
+		background: #FFFFFF;
+	    border: 1px solid #CFCFCF;
+	    border-radius: 3px;
+	    font-family: Signika-Light;
+	    font-size: 15.85px;
+	    color: #585858;
+	    line-height: 28px;
+	    padding: 7px;
+	    width: 100%;
+	    border: 1px solid #CFCFCF;
+
+	    &:focus {
+	    	border: 1px solid #EF7622;
+	    	outline: none;
+	    }
+	}
+
+	.error-label {
+		display: none;
+	}
+
+	.more-info {
+		display: block;
+		font-family: Signika-Light;
+		font-size: 12px;
+		color: #9B9B9B;
+		line-height: 18px;
+	}
+
+	&.false {
+		> label {
+			display: none;
+		}
+
+		.error-label {
+			display: block;
+			color: red;
+		}
+
+		input {
+			border: 1px solid red;
+		}
+	}
+}
+
+.terms {
+	font-family: Signika-Light;
+	font-size: 12px;
+	color: #585858;
+	line-height: 18px;
+}
+
+.steps-navigator {
+	position: fixed;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+    height: 74px;
+    background: #EF7622;
+
+    .steps-nav-next {
+	    font-size: 19px;
+	    color: #FFFFFF;
+	    line-height: 14px;
+	    width: 200px;
+	    height: 100%;
+	    text-align: center;
+	    padding: 30px;
+	    right: 0px;
+	    position: absolute;
+	    border-left: 1px solid #D4661A;
+    }
+
+    .steps-nav-prev {
+	    font-size: 19px;
+	    color: #FFFFFF;
+	    line-height: 14px;
+	    width: 200px;
+	    height: 100%;
+	    text-align: center;
+	    padding: 30px;
+	    left: 0px;
+	    position: absolute;
+	    border-left: 1px solid #D4661A;
+    }
+}
+.react-autosuggest {
+	position: relative;
+
+	.react-autosuggest__suggestions {
+	    width: 100%;
+	    margin: 5px 0 0 0;
+	    padding: 0px;
+	    list-style: none;
+	    position: absolute;
+	    z-index: 2;
+	    background: #FFFFFF;
+		border: 1px solid #CFCFCF;
+		box-shadow: 0px 3px 4px 0px rgba(0,0,0,0.40);
+	}
+
+	.react-autosuggest__suggestion {
+		font-family: Signika-Light;
+		font-size: 16px;
+		color: #333333;
+		line-height: 20px;
+	    padding: 10px;
+	    background: #fff;
+	    cursor: pointer;
+	}
+
+	.react-autosuggest__suggestion--focused {
+	    background: #EEEEEE;
+	}
+
+}
+
+.selected-items {
+	li {
+		background: #EEEEEE;
+	    border-radius: 3px;
+	    padding: 9px;
+	    margin: 7px 0;
+	    box-shadow: 0px 3px 0px 0px #CFCFCF;
+
+	    .remove-item {
+			font-family: icomoon;
+		    font-size: 21px;
+		    color: #585858;
+		    line-height: 11px;
+		    float: right;
+	    }
+	}
+}
