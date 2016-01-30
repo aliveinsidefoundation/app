@@ -131,9 +131,9 @@ class Questionnaire extends Component {
 
     let stepChange = (step, next) => {
       if (next) {
-        if (this.validateStep(step)) {
+        // if (this.validateStep(step)) {
           next();
-        }
+        // }
       }
     };
 
@@ -228,10 +228,7 @@ class Questionnaire extends Component {
                       </div>
                       <div className="form-input">
                         <label>Tell me about your story. </label>
-                        <input
-                          type="text"
-                          ref="q7"
-                        />
+                        <textarea ref="q7"></textarea>
                       </div>
                     </div>
                   </Step>
@@ -284,10 +281,16 @@ class Questionnaire extends Component {
                           ref="q14"
                         />
                       </div>
-                      <div className="form-input">
+                      <div className="form-input hidden">
                         <label>Is your heritage music important to you?</label>
-                        <input type="radio" name="heritage" value="yes" ref="q15"/> yes<br/>
-                        <input type="radio" name="heritage" value="no"/> no<br/>
+                        <div className="radio-button">
+                            <label htmlFor="accessible">
+                              <input type="radio" value="accessible" name="quality" id="accessible"/>Yes
+                            </label>
+                            <label htmlFor="pretty">
+                              <input type="radio" value="pretty" name="quality" id="pretty"/>No
+                            </label>
+                        </div>
                       </div>
                       <div className="form-input">
                         <label>What genres of music are part of your heritage? </label>
@@ -334,10 +337,7 @@ class Questionnaire extends Component {
                       </div>
                       <div className="form-input">
                         <label>What is your most emotional music memory?</label>
-                        <input
-                          type="text"
-                          ref="q22"
-                        />
+                        <textarea ref="q22"></textarea>
                       </div>
                       <div className="form-input">
                         <label>Do you have any life events that are connected with songs? What songs?</label>
@@ -347,6 +347,7 @@ class Questionnaire extends Component {
                         <label>What songs do you love that no one knows you love? Any songs with emotion memories.</label>
                         <Multiselect name="question1" loadOptions='' ref="q24"/>
                       </div>
+                      <div className="btn-finish">The interview is done! Press submit to generate your elder’s playlist.</div>
                     </div>
                   </Step>
                 </Steps>

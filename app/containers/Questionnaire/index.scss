@@ -19,6 +19,10 @@ body {
 .form-input {
 	margin: 20px 0;
 
+	&.hidden {
+		overflow: hidden;
+	}
+
 	label {
 		font-family: Signika-Regular;
 		font-size: 16px;
@@ -44,6 +48,74 @@ body {
 	    }
 	}
 
+	textarea {
+		background: #FFFFFF;
+	    border-radius: 3px;
+	    font-family: Signika-Light;
+	    font-size: 15.85px;
+	    color: #585858;
+	    line-height: 28px;
+	    padding: 7px;
+	    width: 100%;
+	    border: 1px solid #CFCFCF;
+	    min-height: 200px;
+
+	    &:focus {
+	    	border: 1px solid #EF7622;
+	    	outline: none;
+	    }
+	}
+
+	.radio-button {
+		[type="radio"] {
+			border: 0;
+			clip: rect(0 0 0 0);
+			height: 1px; margin: -1px;
+			overflow: hidden;
+			padding: 0;
+			position: absolute;
+			width: 1px;
+		}
+
+			/* One radio button per line */
+		label {
+			display: block;
+			cursor: pointer;
+			float: left;
+			margin: 10px;
+		}
+
+		[type="radio"] + span {
+			display: block;
+		    width: 100px;
+		    background: #fff;
+		    border: 1px solid #EF7622;
+		    float: left;
+		    text-align: center;
+		    font-family: Signika-Light;
+		    font-size: 15.85px;
+		    color: #FFFFFF;
+		    line-height: 28px;
+		    padding: 10px;
+		    box-shadow: 0px 2px 0px 0px #EF7622;
+		}
+
+		[type="radio"] + span {
+			color: #000;
+		}
+
+		[type="radio"] + span:hover {
+			color: #000;
+			background: #FFF8F4;
+		}
+
+		[type="radio"]:checked + span {
+			color: #fff;
+			background: #EF7622;
+			box-shadow: 0px 2px 0px 0px #A2480A;
+		}
+	}
+
 	.error-label {
 		display: none;
 	}
@@ -63,11 +135,11 @@ body {
 
 		.error-label {
 			display: block;
-			color: red;
+			color: #D0021B;
 		}
 
 		input {
-			border: 1px solid red;
+			border: 1px solid #D0021B;
 		}
 	}
 }
@@ -160,4 +232,15 @@ body {
 		    float: right;
 	    }
 	}
+}
+
+.btn-finish {
+	font-family: Signika-Semibold;
+    font-size: 16px;
+    color: #FFFFFF;
+    line-height: 28px;
+    background: #08AAB3;
+    padding: 16PX;
+    text-align: center;
+    cursor: pointer;
 }
