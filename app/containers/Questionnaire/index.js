@@ -13,7 +13,14 @@ class Questionnaire extends Component {
 
   constructor(props) {
     super(props);
+
+    this._questionChange = this._questionChange.bind(this);
+    this._multiChange = this._multiChange.bind(this);
+
     this.state = {
+      answers: {
+
+      },
       questions: {
         0: {
           q1: {
@@ -162,6 +169,8 @@ class Questionnaire extends Component {
                         <input
                           type="text"
                           ref="q1"
+                          name="q1"
+                          onChange={this._questionChange}
                           required
                         />
                       </div>
@@ -174,6 +183,8 @@ class Questionnaire extends Component {
                         <input
                           type="email"
                           ref="q2"
+                          name="q2"
+                          onChange={this._questionChange}
                           required
                         />
                       </div>
@@ -185,9 +196,14 @@ class Questionnaire extends Component {
                   </Step>
                   <Step>
                     <div>
-                      <span className="step-title">Nice to meet you, {this.state.questions[0].q1.value}!</span>
-                      <span>You are an official Music Detective! Now that we know who you are, we want to get to know your elder. </span>
-                      <p>The answers to the questions will generate a playlist, but don’t worry if you aren’t able to answer every questions. That’s OK!  Look for the + along the way for prompts to help you get more detailed answers. </p>
+                      <span className="step-title">
+                        Nice to meet you, {this.state.questions[0].q1.value}!
+                      </span>
+                      <span>You are an official Music Detective! Now that we know who you are, we
+                      want to get to know your elder.</span>
+                      <p>The answers to the questions will generate a playlist, but don’t worry if
+                      you aren’t able to answer every questions. That’s OK!  Look for the + along the
+                      way for prompts to help you get more detailed answers.</p>
                     </div>
                   </Step>
                   <Step>
@@ -200,6 +216,8 @@ class Questionnaire extends Component {
                         <input
                           type="text"
                           ref="q3"
+                          name="q3"
+                          onChange={this._questionChange}
                           required
                         />
                       </div>
@@ -209,6 +227,8 @@ class Questionnaire extends Component {
                         <input
                           type="text"
                           ref="q4"
+                          name="q4"
+                          onChange={this._questionChange}
                           required
                         />
                       </div>
@@ -217,6 +237,8 @@ class Questionnaire extends Component {
                         <input
                           type="text"
                           ref="q5"
+                          name="q5"
+                          onChange={this._questionChange}
                         />
                       </div>
                       <div className="form-input">
@@ -224,11 +246,18 @@ class Questionnaire extends Component {
                         <input
                           type="text"
                           ref="q6"
+                          name="q6"
+                          onChange={this._questionChange}
                         />
                       </div>
                       <div className="form-input">
                         <label>Tell me about your story. </label>
-                        <textarea ref="q7"></textarea>
+                        <textarea
+                          ref="q7"
+                          name="q7"
+                          onChange={this._questionChange}
+                        >
+                        </textarea>
                       </div>
                     </div>
                   </Step>
@@ -241,6 +270,8 @@ class Questionnaire extends Component {
                         <input
                           type="text"
                           ref="q8"
+                          name="q8"
+                          onChange={this._questionChange}
                         />
                       </div>
                       <div className="form-input">
@@ -248,6 +279,8 @@ class Questionnaire extends Component {
                         <input
                           type="text"
                           ref="q9"
+                          name="q9"
+                          onChange={this._questionChange}
                         />
                       </div>
                       <div className="form-input">
@@ -255,19 +288,36 @@ class Questionnaire extends Component {
                         <input
                           type="text"
                           ref="q10"
+                          name="q10"
+                          onChange={this._questionChange}
                         />
                       </div>
                       <div className="form-input">
                         <label>Who were your favorite musicians as a child?</label>
-                        <Multiselect name="question1" loadOptions='' ref="q11"/>
+                        <Multiselect
+                          loadOptions=""
+                          ref="q11"
+                          name="q11"
+                          onChange={this._multiChange}
+                          />
                       </div>
                       <div className="form-input">
                         <label>Who were your favorite musicians as a teenager?</label>
-                        <Multiselect name="question1" loadOptions='' ref="q12"/>
+                        <Multiselect
+                          loadOptions=""
+                          ref="q12"
+                          name="q12"
+                          onChange={this._multiChange}
+                          />
                       </div>
                       <div className="form-input">
                         <label>Who were your favorite musicians as a young adult? </label>
-                        <Multiselect name="question1" loadOptions='' ref="q13"/>
+                        <Multiselect
+                          loadOptions=""
+                          ref="q13"
+                          name="q13"
+                          onChange={this._multiChange}
+                          />
                       </div>
                     </div>
                   </Step>
@@ -279,26 +329,52 @@ class Questionnaire extends Component {
                         <input
                           type="text"
                           ref="q14"
+                          name="q14"
+                          onChange={this._questionChange}
                         />
                       </div>
                       <div className="form-input hidden">
                         <label>Is your heritage music important to you?</label>
                         <div className="radio-button">
-                            <label htmlFor="accessible">
-                              <input type="radio" value="accessible" name="quality" id="accessible"/>Yes
+                            <label htmlFor="radio-yes">
+                              <input
+                                type="radio"
+                                value="yes"
+                                name="q15"
+                                id="radio-yes"
+                                onChange={this._questionChange}
+                              />Yes
                             </label>
-                            <label htmlFor="pretty">
-                              <input type="radio" value="pretty" name="quality" id="pretty"/>No
+                            <label htmlFor="radio-no">
+                              <input
+                                type="radio"
+                                value="no"
+                                name="q15"
+                                id="radio-no"
+                                onChange={this._questionChange}
+                              />No
                             </label>
                         </div>
                       </div>
                       <div className="form-input">
                         <label>What genres of music are part of your heritage? </label>
-                        <Multiselect name="question1" loadOptions='' ref="q16"/>
+                        <Multiselect
+                          loadOptions=""
+                          ref="q16"
+                          name="q16"
+                          onChange={this._multiChange}
+                          />
                       </div>
                       <div className="form-input">
-                        <label>Who are some of the musicians from your heritage that you remember?</label>
-                        <Multiselect name="question1" loadOptions='' ref="q17"/>
+                        <label>
+                          Who are some of the musicians from your heritage that you remember?
+                        </label>
+                        <Multiselect
+                          loadOptions=""
+                          ref="q17"
+                          name="q17"
+                          onChange={this._multiChange}
+                          />
                       </div>
                     </div>
                   </Step>
@@ -310,6 +386,8 @@ class Questionnaire extends Component {
                         <input
                           type="text"
                           ref="q18"
+                          name="q18"
+                          onChange={this._questionChange}
                         />
                       </div>
                       <div className="form-input">
@@ -317,11 +395,20 @@ class Questionnaire extends Component {
                         <input
                           type="text"
                           ref="q19"
+                          name="q19"
+                          onChange={this._questionChange}
                         />
                       </div>
                       <div className="form-input">
-                        <label>What musicians did your parents listen to when you were growing up?</label>
-                        <Multiselect name="question1" loadOptions='' ref="q20"/>
+                        <label>
+                          What musicians did your parents listen to when you were growing up?
+                        </label>
+                        <Multiselect
+                          loadOptions=""
+                          ref="q20"
+                          name="q20"
+                          onChange={this._multiChange}
+                          />
                       </div>
                     </div>
                   </Step>
@@ -329,25 +416,52 @@ class Questionnaire extends Component {
                     <div>
                       <span className="step-title">Music memories. Ask your elder:</span>
                       <div className="form-input">
-                        <label>Imagine you’re a kid in your parent’s car or in the first care you owned. What’s on the radio? </label>
+                        <label>
+                          Imagine you’re a kid in your parent’s car or in the first care you owned.
+                          What’s on the radio?
+                        </label>
                         <input
                           type="text"
                           ref="q21"
+                          name="q21"
+                          onChange={this._questionChange}
                         />
                       </div>
                       <div className="form-input">
                         <label>What is your most emotional music memory?</label>
-                        <textarea ref="q22"></textarea>
+                        <textarea
+                          ref="q22"
+                          name="q22"
+                          onChange={this._questionChange}
+                        >
+                        </textarea>
                       </div>
                       <div className="form-input">
-                        <label>Do you have any life events that are connected with songs? What songs?</label>
-                        <Multiselect name="question1" loadOptions='' ref="q23"/>
+                        <label>
+                          Do you have any life events that are connected with songs? What songs?
+                        </label>
+                        <Multiselect
+                          loadOptions=""
+                          ref="q23"
+                          name="q23"
+                          onChange={this._multiChange}
+                          />
                       </div>
                       <div className="form-input">
-                        <label>What songs do you love that no one knows you love? Any songs with emotion memories.</label>
-                        <Multiselect name="question1" loadOptions='' ref="q24"/>
+                        <label>
+                          What songs do you love that no one knows you love?
+                          Any songs with emotion memories.
+                        </label>
+                        <Multiselect
+                          loadOptions=""
+                          ref="q24"
+                          name="q24"
+                          onChange={this._multiChange}
+                          />
                       </div>
-                      <div className="btn-finish">The interview is done! Press submit to generate your elder’s playlist.</div>
+                      <div className="btn-finish" onClick={this._finish.bind(this)}>
+                        The interview is done! Press submit to generate your elder’s playlist.
+                      </div>
                     </div>
                   </Step>
                 </Steps>
@@ -368,10 +482,25 @@ class Questionnaire extends Component {
   //   });
   // }
 
-  _finish() {
-
+  _multiChange(value, name) {
+    let answers = this.state.answers;
+    answers[name] = value;
+    this.setState({
+      answers: answers
+    });
   }
 
+  _questionChange(e) {
+    let answers = this.state.answers;
+    answers[e.target.name] = e.target.value;
+    this.setState({
+      answers: answers
+    });
+  }
+
+  _finish() {
+    console.log(this.state.answers)
+  }
 }
 
 export default Questionnaire;
