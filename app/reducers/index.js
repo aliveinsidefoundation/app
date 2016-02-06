@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import todo from './todo';
+import autocomplete from './autocomplete';
 
 const rootReducer = combineReducers({
-  todo
+  autocomplete
 });
 
 export default rootReducer;

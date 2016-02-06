@@ -7,6 +7,8 @@ import Steps from '../../components/Steps';
 import Step from '../../components/Step';
 import Multiselect from '../../components/Multiselect';
 
+import Spotify from '../../core/Spotify';
+
 import '!style!css!sass!./index.scss';
 
 class Questionnaire extends Component {
@@ -16,6 +18,8 @@ class Questionnaire extends Component {
 
     this._questionChange = this._questionChange.bind(this);
     this._multiChange = this._multiChange.bind(this);
+
+    this.joel = new Spotify('b7e5e8676be84916b431c98d51b85d5c', '5176ca36c9964509a82916d65aefc719');
 
     this.state = {
       answers: {
@@ -295,7 +299,7 @@ class Questionnaire extends Component {
                       <div className="form-input">
                         <label>Who were your favorite musicians as a child?</label>
                         <Multiselect
-                          loadOptions=""
+                          loadOptions={this._loadOptions.bind(this)}
                           ref="q11"
                           name="q11"
                           onChange={this._multiChange}
@@ -304,7 +308,7 @@ class Questionnaire extends Component {
                       <div className="form-input">
                         <label>Who were your favorite musicians as a teenager?</label>
                         <Multiselect
-                          loadOptions=""
+                          loadOptions={this._loadOptions.bind(this)}
                           ref="q12"
                           name="q12"
                           onChange={this._multiChange}
@@ -313,7 +317,7 @@ class Questionnaire extends Component {
                       <div className="form-input">
                         <label>Who were your favorite musicians as a young adult? </label>
                         <Multiselect
-                          loadOptions=""
+                          loadOptions={this._loadOptions.bind(this)}
                           ref="q13"
                           name="q13"
                           onChange={this._multiChange}
@@ -359,7 +363,7 @@ class Questionnaire extends Component {
                       <div className="form-input">
                         <label>What genres of music are part of your heritage? </label>
                         <Multiselect
-                          loadOptions=""
+                          loadOptions={this._loadOptions.bind(this)}
                           ref="q16"
                           name="q16"
                           onChange={this._multiChange}
@@ -370,7 +374,7 @@ class Questionnaire extends Component {
                           Who are some of the musicians from your heritage that you remember?
                         </label>
                         <Multiselect
-                          loadOptions=""
+                          loadOptions={this._loadOptions.bind(this)}
                           ref="q17"
                           name="q17"
                           onChange={this._multiChange}
@@ -404,7 +408,7 @@ class Questionnaire extends Component {
                           What musicians did your parents listen to when you were growing up?
                         </label>
                         <Multiselect
-                          loadOptions=""
+                          loadOptions={this._loadOptions.bind(this)}
                           ref="q20"
                           name="q20"
                           onChange={this._multiChange}
@@ -441,7 +445,7 @@ class Questionnaire extends Component {
                           Do you have any life events that are connected with songs? What songs?
                         </label>
                         <Multiselect
-                          loadOptions=""
+                          loadOptions={this._loadOptions.bind(this)}
                           ref="q23"
                           name="q23"
                           onChange={this._multiChange}
@@ -453,7 +457,7 @@ class Questionnaire extends Component {
                           Any songs with emotion memories.
                         </label>
                         <Multiselect
-                          loadOptions=""
+                          loadOptions={this._loadOptions.bind(this)}
                           ref="q24"
                           name="q24"
                           onChange={this._multiChange}
@@ -468,19 +472,6 @@ class Questionnaire extends Component {
               </div>
             </div>);
   }
-
-  // inputChange(e, name) {
-  //   let questions = this.state.questions;
-  //   if (name) {
-  //     questions[name] = e;
-  //   } else {
-  //     questions[e.target.name] = e.target.value;
-  //   }
-
-  //   this.setState({
-  //     questions: questions,
-  //   });
-  // }
 
   _multiChange(value, name) {
     let answers = this.state.answers;
@@ -499,8 +490,35 @@ class Questionnaire extends Component {
   }
 
   _finish() {
-    console.log(this.state.answers)
+    // console.log(this.state.answers)
+  }
+
+  _loadOptions(input, callback) {
+    if (input.length > 3) {
+      this.joel.getTracks({years:'1990-2000', market: 'AR', limit: 5, q: input})
+        .then(response => {
+          return response.map(item => {
+            return {id: item.id, name: `${item.name} - ${item.artists[0].name}`};
+          });
+        })
+        .then((response) => {
+          callback(null, response);
+        });
+    }
   }
 }
 
+// function mapStateToProps(state) {
+//   return {
+//     songs: state.data
+//   };
+// }
+
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     songsAutocomplete: bindActionCreators(songsAutocomplete, dispatch)
+//   };
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Questionnaire);
 export default Questionnaire;

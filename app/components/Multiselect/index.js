@@ -14,19 +14,31 @@ export default class Multiselect extends React.Component {
     super(props);
     this.state = {
       selected: {},
+      disabledMax: false,
+      placeholder: ''
     };
+    this.getSuggestions = this.getSuggestions.bind(this);
+    this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
+    this.removeItem = this.removeItem.bind(this);
+    this.getSuggestionValue = this.getSuggestionValue.bind(this);
   }
 
   render() {
-    return (<div className='multiselect-component'>
+    let inputAttributes = {
+      disabled: this.state.disabledMax,
+      placeholder: this.state.placeholder
+    };
+    return (<div className="multiselect-component" disabled>
               <Autosuggest
+                inputAttributes={inputAttributes}
                 suggestions={this.getSuggestions}
-                onSuggestionSelected={this.onSuggestionSelected.bind(this)}
+                onSuggestionSelected={this.onSuggestionSelected}
                 suggestionRenderer={this.suggestionRenderer}
                 suggestionValue={this.getSuggestionValue}
                 id={this.props.name}
               />
-              <SelectedItems items={this.state.selected} removeItem={this.removeItem.bind(this)}/>
+              <div className="auto-mark"></div>
+              <SelectedItems items={this.state.selected} removeItem={this.removeItem}/>
             </div>);
   }
 
@@ -34,15 +46,19 @@ export default class Multiselect extends React.Component {
     let newData = this.state.selected;
     delete newData[id];
     this.setState({
-      selected: newData || {},
+      selected: newData || {}
     });
     this.props.onChange(this.state.selected, this.props.name);
+    if (Object.keys(this.state.selected).length < 5) {
+      this.setState({
+        disabledMax: false,
+        placeholder: ''
+      });
+    }
   }
 
   getSuggestions(input, callback) {
-    const suggestions = [{id:1, name: 'joel'}, {id:2, name: 'marcos'}, {id:3, name: 'julio'}];
-
-    setTimeout(() => callback(null, suggestions), 300); // Emulate API call
+    this.props.loadOptions(input, callback);
   }
 
   onSuggestionSelected(suggestion, event) {
@@ -50,16 +66,22 @@ export default class Multiselect extends React.Component {
     let newItem = this.state.selected;
     newItem[suggestion.id] = suggestion;
     this.setState({
-      selected: newItem,
+      selected: newItem
     });
     this.props.onChange(this.state.selected, this.props.name);
+    if (Object.keys(this.state.selected).length >= 5) {
+      this.setState({
+        disabledMax: true,
+        placeholder: 'Max item selected'
+      });
+    }
   }
 
   suggestionRenderer(track) {
     return <span>{track.name}</span>;
-  };
+  }
 
-  getSuggestionValue(track) {
-    return `${track.name}`;
-  };
+  getSuggestionValue() {
+    return '';
+  }
 }

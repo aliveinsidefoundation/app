@@ -1,0 +1,42 @@
+@import "../../styles/_variables.scss";
+
+/*
+ * playlist
+ */
+
+.playlist {
+  width: 710px;
+  margin: 0 auto;
+
+  h2 {
+    font-family: CoveredByYourGrace;
+      font-size: 36px;
+      color: #08AAB3;
+      line-height: 100px;
+      display: block;
+      text-align: center;
+      width: 100%;
+  }
+
+  ul {
+    li {
+      div {
+        float: left;
+      }
+
+      .song {
+        clear: both;
+        width: 100%;
+      }
+
+      .notes {
+        clear: both;
+        width: 100%;
+
+        textarea {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

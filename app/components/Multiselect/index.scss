@@ -1,3 +1,16 @@
 .button-component {
   color: red;
 }
+
+.multiselect-component {
+	position: relative;
+
+	.auto-mark {
+		width: 40px;
+	    height: 43px;
+	    position: absolute;
+	    background: #EF7622;
+	    top: 0px;
+	    right: 0px;
+	}
+}
