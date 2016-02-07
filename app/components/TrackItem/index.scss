@@ -1,0 +1,96 @@
+@import "../../styles/_variables.scss";
+
+/*
+ * TrackItem
+ */
+
+.trackitem {
+
+  &.note_false {
+    .open {
+      transform: rotate(0deg);
+    }
+
+    .notes {
+      display: none;
+    }
+  }
+
+  &.note_true {
+    .open {
+      transform: rotate(90deg);
+    }
+
+    .notes {
+      display: true;
+    }
+  }
+
+  div {
+    float: left;
+  }
+
+  .item {
+    width: 50%;
+    font-family: Signika-Regular;
+    font-size: 16px;
+    color: #4A4A4A;
+    line-height: 30px;
+
+    .open {
+      font-family: Signika-Light;
+      color: #4A4A4A;
+    }
+
+    .player {
+      margin: 0 10px;
+      padding: 3px 0 0 0px;
+
+      div {
+        width: 20px;
+        float: left;
+      }
+
+    }
+
+    .buttons {
+      font-size: 18px;
+      color: #9B9B9B;
+      line-height: 24px;
+      float: right;
+
+      span {
+        font-family: Signika-Light;
+        margin: 0 5px;
+      }
+
+      i {
+        margin: 0 5px;
+      }
+    }
+  }
+
+  .notes {
+    clear: both;
+    width: 100%;
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      background: #FFFFFF;
+      border: 1px solid #CFCFCF;
+      font-family: Avenir-Light;
+      font-size: 14.74px;
+      line-height: 20px;
+
+      &:focus {
+
+      }
+
+      &:placeholder {
+        color: #CFCFCF;
+      }
+    }
+  }
+}

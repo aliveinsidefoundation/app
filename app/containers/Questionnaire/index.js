@@ -115,6 +115,14 @@ class Questionnaire extends Component {
     };
   }
 
+  ages(year) {
+    return {
+      child: year + 10 + '-' + year + 15,
+      teenanger: year + 16 + '-' + year + 20,
+      adult: year + 21 + '-' + year + 40
+    };
+  }
+
   validateStep(step) {
     let globalValid = true;
     let qs = Object.keys(this.state.questions[step - 1]);
@@ -229,7 +237,7 @@ class Questionnaire extends Component {
                         <label>What is your year of birth? Format: YYYY*</label>
                         <label className="error-label">Your birth is required</label>
                         <input
-                          type="text"
+                          type="date"
                           ref="q4"
                           name="q4"
                           onChange={this._questionChange}

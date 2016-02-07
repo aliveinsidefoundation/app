@@ -5,7 +5,7 @@
  */
 
 .playlist {
-  width: 710px;
+  max-width: 710px;
   margin: 0 auto;
 
   h2 {
@@ -19,22 +19,25 @@
   }
 
   ul {
+    float: left;
+    width: 100%;
+
     li {
-      div {
-        float: left;
-      }
+      float: left;
+      width: 100%;
+      border-bottom: 1px solid #D7D7D7;
+      padding: 14px 0 7px 0;
 
-      .song {
-        clear: both;
-        width: 100%;
-      }
+      &.titles {
+        border-bottom: 1px solid #979797;
 
-      .notes {
-        clear: both;
-        width: 100%;
-
-        textarea {
-          width: 100%;
+        .list-title {
+          float: left;
+          width: 50%;
+          font-family: Signika-Semibold;
+          font-size: 16px;
+          color: #4A4A4A;
+          line-height: 28px;
         }
       }
     }
