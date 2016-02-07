@@ -49,7 +49,7 @@ export default class Multiselect extends React.Component {
       selected: newData || {}
     });
     this.props.onChange(this.state.selected, this.props.name);
-    if (Object.keys(this.state.selected).length < 5) {
+    if (this.props.limit && Object.keys(this.state.selected).length < this.props.limit) {
       this.setState({
         disabledMax: false,
         placeholder: ''
@@ -69,7 +69,7 @@ export default class Multiselect extends React.Component {
       selected: newItem
     });
     this.props.onChange(this.state.selected, this.props.name);
-    if (Object.keys(this.state.selected).length >= 5) {
+    if (this.props.limit && Object.keys(this.state.selected).length >= this.props.limit) {
       this.setState({
         disabledMax: true,
         placeholder: 'Max item selected'

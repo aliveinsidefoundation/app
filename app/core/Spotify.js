@@ -10,11 +10,16 @@ export default class Spotify {
     this.client = Client.instance;
     this.client.settings = {};
     this.track = new TrackHandler();
+    this.artist = new ArtistHandler();
     // let user = new UserHandler();
     // let playlist = new PlaylistHandler();
   }
 
   getTracks(op = {}) {
-    return this.track.search(`${op.q} year:${op.years}`, { limit: op.limit, market: op.market });
+    return this.track.search(op.q, { limit: op.limit, market: op.market });
+  }
+
+  getArtists(op = {}) {
+    return this.artist.search(`${op.q}`, { limit: op.limit, market: op.market });
   }
 }

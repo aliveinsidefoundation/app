@@ -14,6 +14,10 @@ body {
 	    text-align: center;
 	    width: 100%;
 	}
+
+	.steps-content {
+		margin: 0 0 230px 0;
+	}
 }
 
 .form-input {
@@ -160,6 +164,7 @@ body {
     background: #EF7622;
 
     .steps-nav-next {
+    	cursor: pointer;
 	    font-size: 19px;
 	    color: #FFFFFF;
 	    line-height: 14px;
@@ -173,6 +178,7 @@ body {
     }
 
     .steps-nav-prev {
+    	cursor: pointer;
 	    font-size: 19px;
 	    color: #FFFFFF;
 	    line-height: 14px;
@@ -182,7 +188,7 @@ body {
 	    padding: 30px;
 	    left: 0px;
 	    position: absolute;
-	    border-left: 1px solid #D4661A;
+	    border-right: 1px solid #D4661A;
     }
 }
 .react-autosuggest {
