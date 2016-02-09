@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import autocomplete from './autocomplete';
+import playlist from './playlist';
 
 const rootReducer = combineReducers({
-  autocomplete
+  playlist
 });
 
 export default rootReducer;

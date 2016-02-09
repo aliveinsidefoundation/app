@@ -289,21 +289,21 @@ class Questionnaire extends Component {
                       </div>
                       <div className="form-input">
                         <label>What is the first song you remember hearing?</label>
-                        <input
-                          type="text"
+                        <Multiselect
+                          loadOptions={this._loadArtists.bind(this)}
                           ref="q9"
                           name="q9"
-                          onChange={this._questionChange}
-                        />
+                          onChange={this._multiChange}
+                          />
                       </div>
                       <div className="form-input">
                         <label>What was the first record you bought?</label>
-                        <Multiselect
-                          loadOptions={this._loadArtists.bind(this)}
+                        <input
+                          type="text"
                           ref="q10"
                           name="q10"
-                          onChange={this._multiChange}
-                          />
+                          onChange={this._questionChange}
+                        />
                       </div>
                       <div className="form-input">
                         <label>Who were your favorite musicians as a child?</label>
@@ -411,12 +411,18 @@ class Questionnaire extends Component {
                       </div>
                       <div className="form-input">
                         <label>Were you raised religious? If so, what religion? </label>
-                        <input
-                          type="text"
-                          ref="q19"
-                          name="q19"
-                          onChange={this._questionChange}
-                        />
+                        <select ref="q19" name="q19" onChange={this._questionChange}>
+                          <option value="Christian">Christian</option>
+                          <option value="Islamic">Islamic</option>
+                          <option value="Not">Not Religious</option>
+                          <option value="Hinduism">Hinduism</option>
+                          <option value="Chinese">Chinese Traditional Religion</option>
+                          <option value="Buddhism">Buddhism</option>
+                          <option value="Primal">Primal Indigenous</option>
+                          <option value="Judaism">Judaism</option>
+                          <option value="Bahai ">Bahai </option>
+                          <option value="Other">Other</option>
+                        </select>
                       </div>
                       <div className="form-input">
                         <label>
@@ -505,7 +511,8 @@ class Questionnaire extends Component {
   }
 
   _finish() {
-    // console.log(this.state.answers)
+    console.log(this)
+    this.spotify.makePlaylist(this.state.answers, 1989);
   }
 
   _loadOptions(input, callback) {
@@ -513,7 +520,11 @@ class Questionnaire extends Component {
       this.spotify.getTracks({market: 'US', limit: 5, q: input})
         .then(response => {
           return response.map(item => {
-            return {id: item.id, name: `${item.name} - ${item.artists[0].name}`};
+            return {
+              id: item.id,
+              name: `${item.name} - ${item.artists[0].name}`,
+              artist: item.artists.first()
+            };
           });
         })
         .then((response) => {
