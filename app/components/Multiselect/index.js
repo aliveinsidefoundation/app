@@ -37,7 +37,7 @@ export default class Multiselect extends React.Component {
                 suggestionValue={this.getSuggestionValue}
                 id={this.props.name}
               />
-              <div className="auto-mark"></div>
+              <div className="auto-mark"> <i className="icon-menu"/> </div>
               <SelectedItems items={this.state.selected} removeItem={this.removeItem}/>
             </div>);
   }

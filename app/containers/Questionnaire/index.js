@@ -22,7 +22,7 @@ class Questionnaire extends Component {
     this.spotify = new Spotify('b7e5e8676be84916b431c98d51b85d5c', '5176ca36c9964509a82916d65aefc719');
 
     this.state = {
-      year: 1989,
+      year: null,
       answers: {
 
       },
@@ -131,7 +131,7 @@ class Questionnaire extends Component {
     qs.map(key => {
       let elem = this.refs[key];
       let isValid = true;
-      if (elem.checkValidity) {
+      if (elem && elem.checkValidity) {
         isValid = elem.checkValidity();
       }
       let newState = this.state.questions;
@@ -151,9 +151,9 @@ class Questionnaire extends Component {
 
     let stepChange = (step, next) => {
       if (next) {
-        // if (this.validateStep(step)) {
+        if (this.validateStep(step)) {
           next();
-        // }
+        }
       }
     };
 
@@ -290,7 +290,7 @@ class Questionnaire extends Component {
                       <div className="form-input">
                         <label>What is the first song you remember hearing?</label>
                         <Multiselect
-                          loadOptions={this._loadArtists.bind(this)}
+                          loadOptions={this._loadOptions.bind(this)}
                           ref="q9"
                           name="q9"
                           onChange={this._multiChange}
@@ -309,7 +309,7 @@ class Questionnaire extends Component {
                         <label>Who were your favorite musicians as a child?</label>
                         <Multiselect
                           loadOptions={(input, callback) => {
-                            this._loadOptions(`${input} year:${this.ages(this.state.year).child}`, callback);
+                            this._loadOptions(`${input}}`, callback);
                           }}
                           ref="q11"
                           name="q11"
@@ -320,7 +320,7 @@ class Questionnaire extends Component {
                         <label>Who were your favorite musicians as a teenager?</label>
                         <Multiselect
                           loadOptions={(input, callback) => {
-                            this._loadOptions(`${input} year:${this.ages(this.state.year).teenager}`, callback);
+                            this._loadOptions(`${input}}`, callback);
                           }}
                           ref="q12"
                           name="q12"
@@ -331,7 +331,7 @@ class Questionnaire extends Component {
                         <label>Who were your favorite musicians as a young adult? </label>
                         <Multiselect
                           loadOptions={(input, callback) => {
-                            this._loadOptions(`${input} year:${this.ages(this.state.year).adult}`, callback);
+                            this._loadOptions(`${input}}`, callback);
                           }}
                           ref="q13"
                           name="q13"
@@ -388,12 +388,12 @@ class Questionnaire extends Component {
                         <label>
                           Who are some of the musicians from your heritage that you remember?
                         </label>
-                        <Multiselect
-                          loadOptions={this._loadArtists.bind(this)}
+                        <input
+                          type="text"
                           ref="q17"
                           name="q17"
-                          onChange={this._multiChange}
-                          />
+                          onChange={this._questionChange}
+                        />
                       </div>
                     </div>
                   </Step>
@@ -429,7 +429,7 @@ class Questionnaire extends Component {
                           What musicians did your parents listen to when you were growing up?
                         </label>
                         <Multiselect
-                          loadOptions={this._loadOptions.bind(this)}
+                          loadOptions={this._loadArtists.bind(this)}
                           ref="q20"
                           name="q20"
                           onChange={this._multiChange}
@@ -447,8 +447,8 @@ class Questionnaire extends Component {
                         </label>
                         <Multiselect
                           loadOptions={this._loadOptions.bind(this)}
-                          ref="q20"
-                          name="q20"
+                          ref="q21"
+                          name="q21"
                           onChange={this._multiChange}
                           />
                       </div>
@@ -511,8 +511,10 @@ class Questionnaire extends Component {
   }
 
   _finish() {
-    console.log(this)
-    this.spotify.makePlaylist(this.state.answers, 1989);
+    let year = new Date(this.state.answers.q4);
+    this.spotify.makePlaylist(this.state.answers, year.getFullYear()).then(collectionTracks => {
+      console.log(collectionTracks);
+    });
   }
 
   _loadOptions(input, callback) {

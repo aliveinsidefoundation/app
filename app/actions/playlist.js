@@ -4,3 +4,10 @@ export function remove(id) {
     id: id
   };
 }
+
+export function create(answers) {
+  return {
+    type: 'CREATE_PLAYLIST',
+    answers: answers
+  };
+}

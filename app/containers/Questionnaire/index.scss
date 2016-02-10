@@ -1,3 +1,5 @@
+@import "../../styles/_variables.scss";
+
 body {
 	background: #FAFAFA;
 }
@@ -192,6 +194,10 @@ body {
 	    right: 0px;
 	    position: absolute;
 	    border-left: 1px solid #D4661A;
+
+	    &:hover {
+	    	background: $black-orange;
+	    }
     }
 
     .steps-nav-prev {
@@ -206,6 +212,10 @@ body {
 	    left: 0px;
 	    position: absolute;
 	    border-right: 1px solid #D4661A;
+
+	    &:hover {
+	    	background: $black-orange;
+	    }
     }
 }
 .react-autosuggest {

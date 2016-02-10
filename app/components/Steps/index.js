@@ -32,7 +32,7 @@ export default class Steps extends React.Component {
             {
               this.props.children.map((child, index) => {
                 let isActive = index === this.state.currentStep ? 'active-step' : '';
-                return <li key={index} className={isActive} onClick={this._goToStep.bind(this, index)} disabled={isDisabled(index)}>{index}</li>;
+                return <li key={index} className={isActive} /*onClick={this._goToStep.bind(this, index)}*/ disabled={isDisabled(index)}>{index}</li>;
               })
             }
           </ul>

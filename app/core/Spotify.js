@@ -18,6 +18,10 @@ export default class Spotify {
     this.promises = [];
   }
 
+  getTrack(id) {
+    return this.track.get(id);
+  }
+
   getTracks(op = {}) {
     return this.track.search(op.q, { limit: op.limit, market: op.market });
   }
@@ -34,9 +38,9 @@ export default class Spotify {
     };
   }
 
-  getTopFiveArtist(artist, years) {
+  getTopFiveArtist(artist, years, cant = 5) {
     this.promises.push(this.getTracks({
-      q: `artist:${artist} year:${years}`, limit: 5, market: 'US'
+      q: `artist:${artist} year:${years}`, limit: cant, market: 'US'
     }).then(tracks => {
       return tracks.map(track => {
         return track;
@@ -58,51 +62,58 @@ export default class Spotify {
 
 
   makePlaylist(q, age) {
-    let { q11, q12, q13 } = q;
-    let list = [];
+    return new Promise((resolve) => {
+      let { q11, q12, q13 } = q;
+      let list = [];
 
-    if (q11) {
-      q11.age = this.ages(age).child;
-      list.push(q11);
-    }
+      if (q11) {
+        q11.age = this.ages(age).child;
+        list.push(q11);
+      }
 
-    if (q12) {
-      q12.age = this.ages(age).teenager;
-      list.push(q12);
-    }
+      if (q12) {
+        q12.age = this.ages(age).teenager;
+        list.push(q12);
+      }
 
-    if (q13) {
-      q13.age = this.ages(age).adult;
-      list.push(q13);
-    }
+      if (q13) {
+        q13.age = this.ages(age).adult;
+        list.push(q13);
+      }
 
-    list.map(listKey => {
-      Object.keys(listKey).map(key => {
-        if (key !== 'age') {
-          this.getTopFiveArtist(listKey[key].artist.name, listKey.age);
+      list.map(listKey => {
+        Object.keys(listKey).map(key => {
+          if (key !== 'age') {
+            this.getTopFiveArtist(listKey[key].artist.name, listKey.age);
 
-          listKey[key].artist.relatedArtists().then(relatedArtists => {
-            relatedArtists = relatedArtists.slice(0, 5);
-            relatedArtists.map(artist => {
-              return this.getTopFiveArtist(artist.name, this.ages(age).child);
+            listKey[key].artist.relatedArtists().then(relatedArtists => {
+              relatedArtists = relatedArtists.slice(0, 5);
+              relatedArtists.map(artist => {
+                return this.getTopFiveArtist(artist.name, this.ages(age).child);
+              });
             });
-          });
-        }
+          }
+        });
       });
-    });
 
-    Object.keys(q.q17).map(key => {
-      return this.getTopFiveArtist(q.q17[key].name, this.ages(age).child);
-    });
+      if (q.q20) {
+        Object.keys(q.q20).map(key => {
+          this.getTopFiveArtist(q.q20[key].name, this.ages(age).child, 2);
+          this.getTopFiveArtist(q.q20[key].name, this.ages(age).teenager, 2);
+        });
+      }
 
-    setTimeout(() => {
-      Promise.all(this.promises).then(resp => {
-        this.playlist = [].concat.apply([], resp);
-        this.playlist = this.removeDuplicates(this.playlist);
-
+      Object.keys(Object.assign({}, q.q9, q.q21, q.q22, q.q23, q.q24)).map(id => {
+        this.promises.push(this.getTrack(id));
       });
-    }, 3000);
-    // q.q9 add song
-    // q.q11 -> search 5 top tracks from artist in child, search 15 more in this age
+
+      setTimeout(() => {
+        Promise.all(this.promises).then(resp => {
+          this.playlist = [].concat.apply([], resp);
+          this.playlist = this.removeDuplicates(this.playlist);
+          resolve(this.playlist);
+        });
+      }, 3000);
+    });
   }
 }
