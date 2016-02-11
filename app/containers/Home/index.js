@@ -2,10 +2,17 @@ import React from 'react';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import historyHandler from './../../utils/history';
 
 import '!style!css!sass!./index.scss';
 
 class Home extends React.Component {
+
+  componentDidMount() {
+    // once history is available, store it on /utils/history module.
+    historyHandler.set(this.props.history);
+  }
+
   render() {
     return (<div>
               <Header/>

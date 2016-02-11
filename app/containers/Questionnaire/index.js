@@ -6,7 +6,9 @@ import Header from '../../components/Header';
 import Steps from '../../components/Steps';
 import Step from '../../components/Step';
 import Multiselect from '../../components/Multiselect';
+import historyHandler from './../../utils/history';
 
+import * as questionnaireActions from '../../actions/questionnaire';
 import Spotify from '../../core/Spotify';
 
 import '!style!css!sass!./index.scss';
@@ -114,6 +116,11 @@ class Questionnaire extends Component {
         }
       }
     };
+  }
+
+  componentDidMount() {
+    // once history is available, store it on /utils/history module.
+    historyHandler.set(this.props.history);
   }
 
   ages(year) {
@@ -512,9 +519,10 @@ class Questionnaire extends Component {
 
   _finish() {
     let year = new Date(this.state.answers.q4);
-    this.spotify.makePlaylist(this.state.answers, year.getFullYear()).then(collectionTracks => {
-      console.log(collectionTracks);
-    });
+    this.props.qActions.end(this.state.answers, year.getFullYear());
+    // this.spotify.makePlaylist(this.state.answers, year.getFullYear()).then(collectionTracks => {
+      // console.log(collectionTracks);
+    // });
   }
 
   _loadOptions(input, callback) {
@@ -548,20 +556,17 @@ class Questionnaire extends Component {
         });
     }
   }
-
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     songs: state.data
-//   };
-// }
+function mapPropsToState() {
+  return {}
+};
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     songsAutocomplete: bindActionCreators(songsAutocomplete, dispatch)
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    qActions: bindActionCreators(questionnaireActions, dispatch)
+  };
+}
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Questionnaire);
-export default Questionnaire;
+export default connect(mapPropsToState, mapDispatchToProps)(Questionnaire);
+// export default Questionnaire;

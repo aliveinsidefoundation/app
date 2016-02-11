@@ -19,6 +19,12 @@ class Playlist extends React.Component {
     this._add = this._add.bind(this);
   }
 
+  componentDidMount() {
+    if (!this.props.songs.length) {
+      this.props.history.push('/');
+    }
+  }
+
   render() {
     let { songs, actions } = this.props;
     return (<div>
