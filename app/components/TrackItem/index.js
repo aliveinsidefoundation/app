@@ -67,8 +67,12 @@ export default class TrackItem extends Component {
     this.props.onReload();
   }
 
-  _onChange() {
-    this.props.onChange();
+  _onChange(ev) {
+    this.props.onChange({
+      id: this.props.track.id,
+      name: this.props.track.name,
+      comment: ev.target.value
+    });
   }
 
 }

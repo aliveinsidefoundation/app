@@ -10,6 +10,7 @@ import historyHandler from './../../utils/history';
 
 import * as questionnaireActions from '../../actions/questionnaire';
 import Spotify from '../../core/Spotify';
+import * as appActions from '../../actions/app';
 
 import '!style!css!sass!./index.scss';
 
@@ -155,9 +156,11 @@ class Questionnaire extends Component {
   }
 
   render() {
-
     let stepChange = (step, next) => {
       if (next) {
+        if (step === 1) {
+          this.props.appActions.setName(this.state.answers['q1']);
+        }
         if (this.validateStep(step)) {
           next();
         }
@@ -217,7 +220,7 @@ class Questionnaire extends Component {
                   <Step>
                     <div>
                       <span className="step-title">
-                        Nice to meet you, {this.state.questions[0].q1.value}!
+                        Nice to meet you, {this.props.app.name}!
                       </span>
                       <span>You are an official Music Detective! Now that we know who you are, we
                       want to get to know your elder.</span>
@@ -558,13 +561,16 @@ class Questionnaire extends Component {
   }
 }
 
-function mapPropsToState() {
-  return {}
+function mapPropsToState(state) {
+  return {
+    app: state.app
+  }
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    qActions: bindActionCreators(questionnaireActions, dispatch)
+    qActions: bindActionCreators(questionnaireActions, dispatch),
+    appActions: bindActionCreators(appActions, dispatch)
   };
 }
 

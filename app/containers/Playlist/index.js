@@ -12,11 +12,13 @@ class Playlist extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      audios: []
+      audios: [],
+      comments: {}
     };
 
     this._stopAll = this._stopAll.bind(this);
     this._add = this._add.bind(this);
+    this._commentsChange = this._commentsChange.bind(this);
   }
 
   componentDidMount() {
@@ -26,27 +28,26 @@ class Playlist extends React.Component {
   }
 
   render() {
-    let { songs, actions } = this.props;
+    let { songs, actions, app } = this.props;
     return (<div>
               <Header/>
               <div id="container" className="playlist">
                 <div className="wrap-container">
-                  <h2>[name]’s Playlist [dob1938]</h2>
+                  <h2>{app.name}’s Playlist [{app.name}{app.year}]</h2>
                   <ul>
                     <li className="titles">
                       <div className="list-title">Song</div>
                       <div className="list-title">Artist</div>
                     </li>
                     {
-                      songs.map(item => {
+                      songs.map((item, index) => {
                         return (
                           <li key={item.id}>
                             <TrackItem
                               track={item}
-                              onOpen=''
-                              onChange=''
+                              onChange={ this._commentsChange }
                               onRemove={() => {actions.remove(item.id)}}
-                              onPlus=''
+                              onPlus={() => actions.addFive(item.artists[0].id, index)}
                               onReload=''
                               stopAll={this._stopAll}
                               audio={this._add}
@@ -70,11 +71,20 @@ class Playlist extends React.Component {
       item.pause();
     });
   }
+
+  _commentsChange(data) {
+    let comments = this.state.comments;
+    comments[data.id] = data;
+    this.setState({
+      comments
+    });
+  }
 }
 
 let mapStateToProps = (state) => {
   return {
-    songs: state.playlist
+    songs: state.playlist,
+    app: state.app
   };
 };
 

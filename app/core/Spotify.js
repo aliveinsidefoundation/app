@@ -48,6 +48,16 @@ export default class Spotify {
     }));
   }
 
+  getTopTracksByArtist(id) {
+    return this.artist.get([id]).then(artists => {
+      return artists[0].topTracks({country: 'US'}).then(tracks => {
+        return tracks.map(track => {
+          return track;
+        });
+      });
+    });
+  }
+
   removeDuplicates(list) {
     return list.filter((a, b) => {
       return a.id !== b.id;
