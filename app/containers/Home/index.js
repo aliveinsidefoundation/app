@@ -22,7 +22,7 @@ class Home extends React.Component {
                     <div className="intro-txt">
                       <span className="txt-intro-title">Welcome Memory Detective! It's time to start waking memories!</span>
                       <span className="txt-intro">Bring music and identity back to our elders through your human connection and a kick-a playlist curated by you.</span>
-                      <div className="button create-playlist"><i className="icon-music"></i> CREATE A PLAYLiST</div>
+                      <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A PLAYLiST</a>
                     </div>
                     <img src="/images/home-intro.jpg"/>
                   </div>
@@ -48,20 +48,28 @@ class Home extends React.Component {
                   </div>
                   <div className="how-whats">
                     <div className="whats-item back-blue">
-                      <img src="#"/>
+                      <img src="/images/brain-01.png"/>
                       <span>What is a Memory Detective?</span>
                       <p>You are! As a Memory Detective you are on a memory mission by facilitating an interview with an elder to discover what music they connect with most deeply. You will help your elder re­member their fondest moments and you will do this with your presence and caring energy.</p>
                     </div>
                     <div className="whats-item back-organge">
-                      <img src="#"/>
+                      <img src="/images/brain-02.png"/>
                       <span>Why music?</span>
                       <p>Music affects the brain and body unlike anything else it accesses multiple parts of the brain, and miraculously stays strong, almost to the  end. Music and Human Connection are unparalleled and often ignored tools for restoring memory and identity.</p>
                     </div>
                   </div>
                   <div className="home-message">
                     <span>Our goal is to wake memories and also to be "alive inside" together in the here and now.</span>
-                    <div className="button create-playlist"><i className="icon-music"></i> CREATE A PLAYLiST</div>
+                    <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A PLAYLiST</a>
                   </div>
+                </div>
+              </div>
+              <div className="social-networks-container">
+                <div className="social-networks">
+                  <a href="#"><img src="/images/google-icon.png"/></a>
+                  <a href="#"><img src="/images/facebook-icon.png"/></a>
+                  <a href="#"><img src="/images/twitter-icon.png"/></a>
+                  <a href="#"><img src="/images/instagram-icon.png"/></a>
                 </div>
               </div>
               <Footer/>

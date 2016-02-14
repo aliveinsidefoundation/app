@@ -9,7 +9,7 @@ export default class Header extends Component {
                 <a className="logo" href="/">
                   <img src="/images/logo.png"/>
                 </a>
-                <div className="button create-playlist"><i className="icon-music"></i> CREATE A PLAYLiST</div>
+                <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A PLAYLiST</a>
                 <a href="/#/about" className="menu-item">ABOUT THE FOUNDATION</a>
               </div>
             </div>);

@@ -172,6 +172,11 @@ body {
 	font-size: 12px;
 	color: #585858;
 	line-height: 18px;
+
+	a {
+		color: #585858;
+		text-decoration: underline;
+	}
 }
 
 .steps-navigator {
@@ -276,4 +281,51 @@ body {
     padding: 16PX;
     text-align: center;
     cursor: pointer;
+}
+
+.nice-meet {
+	p {
+		font-family: Signika-Light;
+		font-size: 15.85px;
+		color: #585858;
+		line-height: 28px;
+		margin: 25px 0;
+	}
+}
+
+.input-help {
+	float: left;
+    position: relative;
+    width: 100%;
+
+    &.open_true {
+    	.plus {
+    		transform: rotate(45deg);
+    	}
+    }
+
+	.plus {
+		font-family: icomoon;
+	    color: #262626;
+	    font-size: 20px;
+	    position: absolute;
+	    right: 0px;
+	    top: -27px;
+	    cursor: pointer;
+	}
+	.help-content {
+		background: #EEEEEE;
+	    font-family: Signika-Semibold;
+	    font-size: 16px;
+	    color: #4A4A4A;
+	    line-height: 28px;
+	    padding: 27px;
+	    border-left: 5px solid $orange;
+	    margin: 0 0 20px 0;
+
+	    span {
+	    	display: block;
+	    	clear: both;
+	    }
+	}
 }

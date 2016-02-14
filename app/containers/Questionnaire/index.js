@@ -23,9 +23,10 @@ class Questionnaire extends Component {
     this._questionChange = this._questionChange.bind(this);
     this._multiChange = this._multiChange.bind(this);
 
-    this.spotify = new Spotify('b7e5e8676be84916b431c98d51b85d5c', '5176ca36c9964509a82916d65aefc719');
+    this.spotify = new Spotify();
 
     this.state = {
+      help1: false,
       year: null,
       answers: {
 
@@ -156,6 +157,34 @@ class Questionnaire extends Component {
     return globalValid;
   }
 
+  help1() {
+    let show = () => {
+      this.setState({
+        help1: !this.state.help1
+      });
+    };
+    return (
+      <div className={'input-help open_'+this.state.help1}>
+        <div className="plus" onClick={show}>+</div>
+        { this.state.help1 ?
+        <div className="help-content">
+          <span>
+            Here are some questions to learn more about your elder’s story.
+          </span>
+          <span>
+            What was your youth like?
+          </span>
+          <span>
+            What was the biggest event that affected your life?
+          </span>
+        </div>
+        :
+        ''
+        }
+      </div>
+    );
+  }
+
   render() {
     let stepChange = (step, next) => {
       if (next) {
@@ -212,22 +241,23 @@ class Questionnaire extends Component {
                           required
                         />
                       </div>
-                      <p className="terms">`I agree to the Terms & Conditions and Privacy Policy
-                      of this website. I understand that the any information I provide will be
+                      <p className="terms">I agree to the <a href="#" target="_blank">
+                      Terms & Conditions</a> and <a href="#" target="_blank">Privacy Policy
+                      </a> of this website. I understand that the any information I provide will be
                       shared with the Alive Inside Foundation. This information will only be used
-                      for X purposes and not shared publicy without your permission.`</p>
+                      for X purposes and not shared publicy without your permission.</p>
                     </div>
                   </Step>
                   <Step>
-                    <div>
+                    <div className="nice-meet">
                       <span className="step-title">
                         Nice to meet you, {this.props.app.name}!
                       </span>
                       <span>You are an official Music Detective! Now that we know who you are, we
                       want to get to know your elder.</span>
                       <p>The answers to the questions will generate a playlist, but don’t worry if
-                      you aren’t able to answer every questions. That’s OK!  Look for the + along the
-                      way for prompts to help you get more detailed answers.</p>
+                      you aren’t able to answer every questions. That’s OK!  </p>
+                      <p>Look for the + along the way for prompts to help you get more detailed answers.</p>
                     </div>
                   </Step>
                   <Step>
@@ -276,6 +306,7 @@ class Questionnaire extends Component {
                       </div>
                       <div className="form-input">
                         <label>Tell me about your story. </label>
+                        {this.help1()}
                         <textarea
                           ref="q7"
                           name="q7"

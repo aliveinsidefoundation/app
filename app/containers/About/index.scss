@@ -40,7 +40,7 @@
       font-size: 16px;
       color: #4A4A4A;
       line-height: 28px;
-      width: 50%;
+      width: 65%;
       text-align: center;
       margin: 0 auto 25px;
 
@@ -63,6 +63,8 @@
       font-weight: 600;
       margin: 33px auto 0;
       width: 197px;
+      text-decoration: none;
+      display: block;
 
       &:hover {
         background: $orange;
@@ -145,6 +147,8 @@
       font-weight: 600;
       background: #EF7622;
       box-shadow: 0px 5px 0px 0px #BA5C1B;
+      display: block;
+      text-decoration: none;
 
       &:hover {
         background: $black-orange;

@@ -27,6 +27,7 @@
     font-size: 14px;
     color: #9B9B9B;
     line-height: 17px;
+    text-decoration: none;
 
     &:hover {
       color: #585858;
@@ -41,6 +42,7 @@
     font-size: 14px;
     font-weight: 600;
     margin: 22px;
+    text-decoration: none;
 
     @media (max-width: 500px) {
       display: none;
