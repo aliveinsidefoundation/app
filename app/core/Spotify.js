@@ -126,4 +126,38 @@ export default class Spotify {
       }, 3000);
     });
   }
+
+  makePlaylistBasedSong(artistId) {
+    return new Promise((resolve) => {
+      let total;
+      let trackList = [];
+      this.artist.get([artistId]).then(artists => {
+        artists.first().relatedArtists().then((relatedArtists) => {
+          relatedArtists = relatedArtists.slice(0, 10);
+          if (relatedArtists.length) {
+            relatedArtists.push(artists.first());
+            for (let i = relatedArtists.length - 1; i >= 0; i--) {
+              total = relatedArtists.length - 1;
+              relatedArtists[i].topTracks({ country: 'US' }).then((tracks) => {
+                if (tracks.length) {
+                  for (let e = tracks.length - 1; e >= 0; e--) {
+                    trackList.push(tracks[e]);
+                    if (e === 0) {
+                      total -= 1;
+                      if (total === 0) {
+                        resolve(this.orderByPopularity(trackList));
+                      }
+                    }
+                  }
+                } else {
+                  total -= 1;
+                }
+              });
+              //
+            }
+          }
+        });
+      });
+    });
+  }
 }

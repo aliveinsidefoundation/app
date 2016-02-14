@@ -48,3 +48,12 @@ export function addTrack(track) {
     track: track
   };
 }
+
+export function makePlaylist(artist) {
+  return dispatch => {
+    let spotify = new Spotify();
+    spotify.makePlaylistBasedSong(artist).then(collectionTracks => {
+      dispatch(create(collectionTracks));
+    });
+  };
+}

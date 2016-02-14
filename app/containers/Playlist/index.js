@@ -65,7 +65,7 @@ class Playlist extends React.Component {
                               onChange={ this._commentsChange }
                               onRemove={() => {actions.remove(item.id)}}
                               onPlus={() => actions.addFive(item.artists[0].id, index)}
-                              onReload=''
+                              onReload={() => {actions.makePlaylist(item.artists[0].id)}}
                               stopAll={this._stopAll}
                               audio={this._add}
                             />
