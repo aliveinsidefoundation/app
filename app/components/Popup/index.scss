@@ -1,0 +1,57 @@
+@import "../../styles/_variables.scss";
+
+/*
+ * TrackItem
+ */
+
+.popup-container {
+  .popup {
+    width: 370px;
+    height: 320px;
+    padding: 20px;
+    position: absolute;
+    z-index: 101;
+    background: #fff;
+    top: 50%;
+    left: 50%;
+    margin: -160px 0 0 -185px;
+
+    .create-playlist {
+      padding: 10px 21px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 auto;
+      background: #EF7622;
+      box-shadow: 0px 5px 0px 0px #BA5C1B;
+      float: left;
+
+      &:hover {
+        background: $black-orange;
+      }
+    }
+
+    .cancel {
+      padding: 10px 21px;
+      color: #9B9B9B;
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 auto;
+      float: left;
+
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+
+  .overlay {
+  	background: #000;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 100;
+    opacity: 0.5
+  }
+}
+

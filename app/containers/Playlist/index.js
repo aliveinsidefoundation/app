@@ -7,6 +7,8 @@ import Spotify from '../../core/Spotify';
 import Header from '../../components/Header';
 import TrackItem from '../../components/TrackItem';
 import Multiselect from '../../components/Multiselect';
+import Popup from '../../components/Popup';
+
 import * as playlistActions from '../../actions/playlist';
 import * as appActions from '../../actions/app';
 
@@ -18,7 +20,8 @@ class Playlist extends React.Component {
     super(props);
     this.state = {
       audios: [],
-      comments: {}
+      comments: {},
+      showPopup: false
     };
 
     this._stopAll = this._stopAll.bind(this);
@@ -36,6 +39,8 @@ class Playlist extends React.Component {
   render() {
     let { songs, actions, app } = this.props;
     return (<div>
+              { this.state.showPopup ?
+                <Popup continue={this._popupContinue.bind(this)} cancel={this._popupCancel.bind(this)}/> : ''}
               <Header/>
               <div id="container" className="playlist">
                 <div className="wrap-container">
@@ -65,7 +70,7 @@ class Playlist extends React.Component {
                               onChange={ this._commentsChange }
                               onRemove={() => {actions.remove(item.id)}}
                               onPlus={() => actions.addFive(item.artists[0].id, index)}
-                              onReload={() => {actions.makePlaylist(item.artists[0].id)}}
+                              onReload={() => {this._showPopup(item.artists[0].id)}}
                               stopAll={this._stopAll}
                               audio={this._add}
                             />
@@ -119,6 +124,26 @@ class Playlist extends React.Component {
   _onChange(track) {
     let tracks = Object.keys(track);
     this.props.actions.addTrack(track[tracks[tracks.length - 1]].track);
+  }
+
+  _showPopup(artist) {
+    this.currentArtist = artist;
+    this.setState({
+      showPopup: true
+    });
+  }
+
+  _popupContinue() {
+    this.setState({
+      showPopup: false
+    });
+    this.props.actions.makePlaylist(this.currentArtist);
+  }
+
+  _popupCancel() {
+    this.setState({
+      showPopup: false
+    });
   }
 
 }
