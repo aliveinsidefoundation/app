@@ -41,3 +41,10 @@ export function addFive(id, index) {
     });
   };
 }
+
+export function addTrack(track) {
+  return {
+    type: 'ADD_SONG',
+    track: track
+  };
+}

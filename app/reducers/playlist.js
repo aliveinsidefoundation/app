@@ -25,6 +25,10 @@ export default (state = initState, action) => {
       let newArray = state.slice();
       newArray.splice(action.index + 1, 0, ...action.songs);
       return dedup(newArray);
+    case 'ADD_SONG':
+      let songs = state.slice();
+      songs.push(action.track);
+      return songs;
     default:
       return state;
   }

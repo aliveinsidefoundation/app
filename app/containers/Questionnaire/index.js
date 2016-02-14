@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import Spotify from '../../core/Spotify';
+
 import Header from '../../components/Header';
 import Steps from '../../components/Steps';
 import Step from '../../components/Step';
@@ -9,7 +11,6 @@ import Multiselect from '../../components/Multiselect';
 import historyHandler from './../../utils/history';
 
 import * as questionnaireActions from '../../actions/questionnaire';
-import Spotify from '../../core/Spotify';
 import * as appActions from '../../actions/app';
 
 import '!style!css!sass!./index.scss';
