@@ -4,3 +4,17 @@ export function setName(name) {
     name: name
   };
 }
+
+export function loadingOn() {
+  return {
+    type: 'LOADING',
+    loading: true
+  };
+}
+
+export function loadingOff() {
+  return {
+    type: 'LOADING',
+    loading: false
+  };
+}

@@ -21,7 +21,8 @@ class Playlist extends React.Component {
     this.state = {
       audios: [],
       comments: {},
-      showPopup: false
+      showPopup: false,
+      help: true
     };
 
     this._stopAll = this._stopAll.bind(this);
@@ -36,12 +37,41 @@ class Playlist extends React.Component {
     }
   }
 
+  help() {
+    let show = () => {
+      this.setState({
+        help: !this.state.help
+      });
+    };
+    return (
+      <div className={'help-playlist-container open_'+this.state.help}>
+        <div className="help-playlist">
+          {
+           this.state.help ?
+           <div className="wrap-container">
+            <span className="title">WHAT HAPPENS NOW:</span>
+            <span>1 - Listen to the playlist with [elder’s name] and remove any unwanted songs and add any additional songs.</span>
+            <span>2 - Use the note section under each song to note [elder’s name] response to that song.</span>
+            <span>3 - Export the playlist to Spotify! Don’t worry if you don’t have an account, you’ll be able to create one. A text version of this playlist has also been emailed you.</span>
+            <div className="button got-it" onClick={show}>GOT IT!</div>
+          </div> :
+          ''
+          }
+        </div>
+        <div className="wrap-container">
+          <div className="instructions" onClick={show}><span className="cross">+</span> Instructions</div>
+        </div>
+      </div>
+      );
+  }
+
   render() {
     let { songs, actions, app } = this.props;
     return (<div>
               { this.state.showPopup ?
                 <Popup continue={this._popupContinue.bind(this)} cancel={this._popupCancel.bind(this)}/> : ''}
               <Header/>
+              {this.help()}
               <div id="container" className="playlist">
                 <div className="wrap-container">
                   <h2>{app.name}’s Playlist [{app.name}{app.year}]</h2>
@@ -80,6 +110,9 @@ class Playlist extends React.Component {
                     }
                   </ul>
                 </div>
+              </div>
+              <div className="footer-playlist">
+                <div className="button save">SAVE TO SPOTIFY</div>
               </div>
             </div>);
   }

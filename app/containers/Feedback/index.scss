@@ -10,6 +10,19 @@ body {
 		margin: 0 auto 100px auto;
 	}
 
+	.feedback-helper {
+		background: #EEEEEE;
+		padding: 50px;
+		border-left: 4px solid #EF7622;
+
+		p {
+			font-family: Signika-Semibold;
+			font-size: 16px;
+			color: #4A4A4A;
+			line-height: 28px;
+		}
+	}
+
 	.title {
 		font-family: CoveredByYourGrace;
 	    font-size: 36px;

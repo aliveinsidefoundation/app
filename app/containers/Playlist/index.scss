@@ -21,6 +21,7 @@
   ul {
     float: left;
     width: 100%;
+    margin: 0 0 100px 0;
 
     li {
       float: left;
@@ -42,4 +43,96 @@
       }
     }
   }
+}
+
+.help-playlist-container {
+
+  &.open_true {
+    .cross {
+      transform: rotate(45deg);
+    }
+  }
+
+  .instructions {
+    font-family: icomoon;
+    font-size: 14px;
+    color: #08AAB3;
+    line-height: 14px;
+    float: right;
+    margin: 20px 0 0 0;
+
+    .cross {
+      font-size: 20px;
+    }
+
+
+  }
+
+  .help-playlist {
+    background: #08AAB3;
+
+    .wrap-container{
+      padding: 50px;
+    }
+
+    .title {
+      font-family: Signika-Bold;
+      font-size: 16px;
+      color: #FFFFFF;
+      line-height: 28px;
+    }
+
+    span {
+      display: block;
+      clear: both;
+      font-family: Signika-Light;
+      font-size: 16px;
+      color: #FFFFFF;
+      line-height: 28px;
+    }
+
+     .got-it {
+      width: 93px;
+      margin: 20px 0 0 0;
+      padding: 12px 21px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      background: #EF7622;
+      box-shadow: 0px 5px 0px 0px #BA5C1B;
+      display: block;
+      text-decoration: none;
+
+      &:hover {
+        background: $black-orange;
+      }
+    }
+  }
+}
+
+.footer-playlist {
+  position: fixed;
+  width: 100%;
+  left: 0px;
+  bottom: 0px;
+  height: 74px;
+  background: #EF7622;
+
+  .save {
+    width: 148px;
+    margin: 17px auto;
+    padding: 12px 21px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    background: #08AAB3;
+    box-shadow: 0px 5px 0px 0px #106D72;
+    display: block;
+    text-decoration: none
+
+    &:hover {
+      background: #09A2AB;
+    }
+  }
+
 }

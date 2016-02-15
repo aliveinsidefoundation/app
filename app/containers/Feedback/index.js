@@ -7,8 +7,7 @@ import Spotify from '../../core/Spotify';
 import Header from '../../components/Header';
 import historyHandler from './../../utils/history';
 
-// import * as questionnaireActions from '../../actions/questionnaire';
-// import * as appActions from '../../actions/app';
+import * as appActions from '../../actions/app';
 
 import '!style!css!sass!./index.scss';
 
@@ -28,8 +27,13 @@ class Feedback extends Component {
               <Header/>
               <div className="wrap-container form-container">
                 <span className="title">Your experience</span>
+                <div className="feedback-helper">
+                  <p>We’d love to hear how this experience was for you. If you wouldn’t mind taking
+                   a moment to reflect and respond to the questions below, we’d greatly appreciate
+                    it! You were a super memory detective! Keep awakening memories!</p>
+                </div>
                 <div className="form-input">
-                  <label>What song did [elder’s name] react most strongly to?</label>
+                  <label>What song did {this.props.app.name} react most strongly to?</label>
                   <input
                     type="text"
                     ref="q3"
@@ -74,18 +78,16 @@ class Feedback extends Component {
 
 }
 
-// function mapPropsToState(state) {
-//   return {
-//     app: state.app
-//   }
-// };
+function mapPropsToState(state) {
+  return {
+    app: state.app
+  };
+}
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     qActions: bindActionCreators(questionnaireActions, dispatch),
-//     appActions: bindActionCreators(appActions, dispatch)
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    appActions: bindActionCreators(appActions, dispatch)
+  };
+}
 
-// export default connect(mapPropsToState, mapDispatchToProps)(Questionnaire);
-export default Feedback;
+export default connect(mapPropsToState, mapDispatchToProps)(Feedback);

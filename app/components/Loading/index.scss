@@ -1,0 +1,17 @@
+@import "../../styles/_variables.scss";
+
+.loading {
+  position: fixed;
+    width: 100%;
+    height: 100%;
+    background: $black-orange;
+    z-index: 9999;
+
+  img {
+      width: 50px;
+      left: 50%;
+      top: 50%;
+      position: absolute;
+      margin: -25px 0 0 -25px;
+  }
+}

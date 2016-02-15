@@ -8,6 +8,7 @@ import Header from '../../components/Header';
 import Steps from '../../components/Steps';
 import Step from '../../components/Step';
 import Multiselect from '../../components/Multiselect';
+import Loading from '../../components/Loading';
 import historyHandler from './../../utils/history';
 
 import * as questionnaireActions from '../../actions/questionnaire';
@@ -210,6 +211,7 @@ class Questionnaire extends Component {
     };
 
     return (<div className="questionnaire-section">
+              {this.props.loading ? <Loading/> : ''}
               <Header/>
               <div className="wrap-container">
                 <Steps settings={settings}>

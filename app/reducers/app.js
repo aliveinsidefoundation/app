@@ -1,6 +1,7 @@
 let initialstate = {
   name: 'joel',
-  year: '1989'
+  year: '1989',
+  loading: false
 };
 
 export default (state = initialstate, action) => {
@@ -10,6 +11,9 @@ export default (state = initialstate, action) => {
       return state;
     case 'APP_SET_YEAR':
       state.year = action.year;
+      return state;
+    case 'LOADING':
+      state.loading = action.loading;
       return state;
     default:
       return state;
