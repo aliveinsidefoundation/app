@@ -23,7 +23,7 @@ class About extends React.Component {
                   <div className="video">
                     <div className="video-container">
                       <div className="video-title">The film that started it all…</div>
-                      <iframe width="775" height="440" src="https://www.youtube.com/embed/IaB5Egej0TQ" frameBorder="0" allowFullScreen></iframe>
+                      <iframe src="https://www.youtube.com/embed/IaB5Egej0TQ" frameBorder="0" allowFullScreen></iframe>
                     </div>
                   </div>
                   <div className="about-message">

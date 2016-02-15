@@ -155,4 +155,21 @@
       }
     }
   }
+
+  iframe {
+    width: 775px;
+    height: 440px;
+
+    @media (max-width: 768px) {
+      width: 440px;
+      height: 247px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    @media (max-width: 401px) {
+      width: 240px;
+      height: 135px;
+    }
+  }
 }
