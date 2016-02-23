@@ -1,5 +1,6 @@
 import Spotify from '../core/Spotify';
 import history from './../utils/history';
+import * as appActions from './app';
 
 export function create(songs) {
   return {
@@ -51,8 +52,11 @@ export function addTrack(track) {
 
 export function makePlaylist(artist) {
   return dispatch => {
+    dispatch(appActions.loadingOn());
     let spotify = new Spotify();
     spotify.makePlaylistBasedSong(artist).then(collectionTracks => {
+      console.log('here')
+      dispatch(appActions.loadingOff());
       dispatch(create(collectionTracks));
     });
   };

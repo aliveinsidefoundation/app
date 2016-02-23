@@ -8,6 +8,7 @@ import Header from '../../components/Header';
 import TrackItem from '../../components/TrackItem';
 import Multiselect from '../../components/Multiselect';
 import Popup from '../../components/Popup';
+import Loading from '../../components/Loading';
 
 import * as playlistActions from '../../actions/playlist';
 import * as appActions from '../../actions/app';
@@ -71,6 +72,7 @@ class Playlist extends React.Component {
   render() {
     let { songs, actions, app } = this.props;
     return (<div>
+              { app.loading ? <Loading/> : ''}
               { this.state.showPopup ?
                 <Popup
                   continue={this._popupContinue}

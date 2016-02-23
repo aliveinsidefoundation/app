@@ -38,6 +38,10 @@
     color: #4A4A4A;
     line-height: 30px;
 
+    @media (max-width: 401px) {
+      width: 100%;
+    }
+
     .open {
       font-family: Signika-Light;
       color: #4A4A4A;
