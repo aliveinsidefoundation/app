@@ -11,8 +11,8 @@ export default class Popup extends Component {
     return (
       <div className="popup-container">
         <div className="popup">
-          <p>Are you sure you want to make a new playlist out of [song name] by [artist]?</p>
-          <p>Creating a new playlist will erase the current playlist. Export this playlist to Spotify if you want to save it before continuing.</p>
+          <p className="title">Are you sure you want to make a new playlist out of {this.props.track.name} by {this.props.track.artists[0].name}?</p>
+          <p className="message">Creating a new playlist will erase the current playlist. Export this playlist to Spotify if you want to save it before continuing.</p>
           <div className="button create-playlist" onClick={this.props.continue}>
             CREATE NEW PLAYLiST
           </div>

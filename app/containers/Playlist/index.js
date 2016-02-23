@@ -22,12 +22,15 @@ class Playlist extends React.Component {
       audios: [],
       comments: {},
       showPopup: false,
-      help: true
+      help: true,
+      currentTrack: null
     };
 
     this._stopAll = this._stopAll.bind(this);
     this._add = this._add.bind(this);
     this._commentsChange = this._commentsChange.bind(this);
+    this._popupContinue = this._popupContinue.bind(this);
+    this._popupCancel = this._popupCancel.bind(this);
     this.spotify = new Spotify('b7e5e8676be84916b431c98d51b85d5c', '5176ca36c9964509a82916d65aefc719');
   }
 
@@ -69,7 +72,11 @@ class Playlist extends React.Component {
     let { songs, actions, app } = this.props;
     return (<div>
               { this.state.showPopup ?
-                <Popup continue={this._popupContinue.bind(this)} cancel={this._popupCancel.bind(this)}/> : ''}
+                <Popup
+                  continue={this._popupContinue}
+                  cancel={this._popupCancel}
+                  track={this.state.currentTrack}
+                /> : ''}
               <Header/>
               {this.help()}
               <div id="container" className="playlist">
@@ -100,7 +107,7 @@ class Playlist extends React.Component {
                               onChange={ this._commentsChange }
                               onRemove={() => {actions.remove(item.id)}}
                               onPlus={() => actions.addFive(item.artists[0].id, index)}
-                              onReload={() => {this._showPopup(item.artists[0].id)}}
+                              onReload={() => {this._showPopup(item)}}
                               stopAll={this._stopAll}
                               audio={this._add}
                             />
@@ -137,7 +144,7 @@ class Playlist extends React.Component {
 
   _loadOptions(input, callback) {
     if (input.length > 3) {
-      this.spotify.getTracks({market: 'US', limit: 5, q: input})
+      this.spotify.getTracks({ market: 'US', limit: 5, q: input })
         .then(response => {
           return response.map(item => {
             return {
@@ -159,9 +166,9 @@ class Playlist extends React.Component {
     this.props.actions.addTrack(track[tracks[tracks.length - 1]].track);
   }
 
-  _showPopup(artist) {
-    this.currentArtist = artist;
+  _showPopup(track) {
     this.setState({
+      currentTrack: track,
       showPopup: true
     });
   }
@@ -170,7 +177,7 @@ class Playlist extends React.Component {
     this.setState({
       showPopup: false
     });
-    this.props.actions.makePlaylist(this.currentArtist);
+    this.props.actions.makePlaylist(this.state.currentTrack.artists[0].id);
   }
 
   _popupCancel() {
