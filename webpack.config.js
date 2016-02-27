@@ -1,4 +1,5 @@
 // webpack.config.js
+var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
 
@@ -42,6 +43,13 @@ module.exports = ({
     ],
   },
   plugins: [
+    new webpack.ProvidePlugin({
+        'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
+        'Map': 'core-js/fn/map',
+        'Symbol': 'core-js/fn/symbol',
+        'Promise': 'core-js/fn/promise',
+        'Object.assign': 'core-js/fn/object/assign'
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin('style.css', {

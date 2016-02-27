@@ -8,11 +8,16 @@ import {Client, TrackHandler, PlaylistHandler, ArtistHandler, UserHandler} from 
 export default class Spotify {
   constructor(spotify = {client: '', token: ''}) {
     this.client = Client.instance;
-    this.client.settings = {};
+    this.client.settings = {
+      clientId: 'b7e5e8676be84916b431c98d51b85d5c',
+      secretId: '5176ca36c9964509a82916d65aefc719',
+      scopes: 'playlist-modify-public playlist-modify-private',
+      redirect_uri: 'http://localhost:8080/login'
+    };
     this.track = new TrackHandler();
     this.artist = new ArtistHandler();
-    // let user = new UserHandler();
-    // let playlist = new PlaylistHandler();
+    this.user = new UserHandler();
+    this.playlistHandler = new PlaylistHandler();
     //
     this.playlist = [];
     this.promises = [];
@@ -160,4 +165,35 @@ export default class Spotify {
       });
     });
   }
+
+  save(tracks, playlistName) {
+    return new Promise((resolve) => {
+      this.client.login((url) => {
+        window.open(
+          url,
+          'Spotify',
+          'menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width=400,height=500'
+        );
+        // :D
+        window.addEventListener('storage', (data) => {
+          if (data.key === 'magic_token') {
+            this.client.token = data.newValue;
+
+            this.user.me().then((userEntity) => {
+              this.playlistHandler.create(userEntity.id, playlistName, false).then((myPlaylist) => {
+                myPlaylist.addTrack(tracks).then(() => {
+                  resolve({ ok: true });
+                });
+              }).catch(() => {
+                resolve({ ok: false });
+              });
+            }).catch(() => {
+              resolve({ ok: false });
+            });
+          }
+        });
+      });
+    });
+  }
+
 }

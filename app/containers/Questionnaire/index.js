@@ -211,7 +211,7 @@ class Questionnaire extends Component {
     };
 
     return (<div className="questionnaire-section">
-              {this.props.loading ? <Loading/> : ''}
+              {this.props.app.loading ? <Loading/> : ''}
               <Header/>
               <div className="wrap-container">
                 <Steps settings={settings}>
