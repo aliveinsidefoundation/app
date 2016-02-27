@@ -4,13 +4,13 @@ import * as appActions from './app';
 let sendEmail = (data) => {
   return dispatch => {
     fetch('http://fs000430.ferozo.com/aif/index.php', {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-type": "application/json"
+        'Content-type': 'application/json'
       },
       body: JSON.stringify(data)
     }).then((response) => {
-
+      appActions.loadingOff();
     });
   };
 };

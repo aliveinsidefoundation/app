@@ -14,6 +14,8 @@ class Player extends Component {
       isLoading: false
     };
     this.playerEvent = {};
+    this._play = this._play.bind(this);
+    this._stop = this._stop.bind(this);
   }
 
   componentDidMount() {
@@ -69,18 +71,20 @@ class Player extends Component {
   }
 
   render() {
-    return <div>
-              { !this.state.isPlaying && !this.state.isLoading ?
-                <img src='images/volume.svg' onClick={this._play.bind(this)}/> : null
-              }
-              { this.state.isPlaying && !this.state.isLoading ?
-                <img src='images/pause.svg' onClick={this._stop.bind(this)}/> : null
-              }
-              { this.state.isLoading ?
-                <img src='images/tail-spin.svg' className='player-loading'/> : null
-              }
-              <audio ref='audio' src={this.props.source} preload='none'/>
-            </div>;
+    return (
+      <div>
+        { !this.state.isPlaying && !this.state.isLoading ?
+          <img src="images/volume.svg" onClick={this._play}/> : null
+        }
+        { this.state.isPlaying && !this.state.isLoading ?
+          <img src="images/pause.svg" onClick={this._stop}/> : null
+        }
+        { this.state.isLoading ?
+          <img src="images/tail-spin.svg" className="player-loading"/> : null
+        }
+        <audio ref="audio" src={this.props.source} preload="none"/>
+      </div>
+      );
   }
 }
 

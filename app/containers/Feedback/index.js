@@ -18,6 +18,7 @@ class Feedback extends Component {
     super(props);
     this.state = {
       answers: {
+        fix: false,
         name: this.props.app.name,
         year: this.props.app.year
       }
@@ -28,12 +29,10 @@ class Feedback extends Component {
   }
 
   componentDidMount() {
-    // once history is available, store it on /utils/history module.
     historyHandler.set(this.props.history);
   }
 
   render() {
-    // console.log(this.props.app.loading)
     return (<div className="feedback-section">
               { this.props.app.loading ? <Loading/> : '' }
               <Header/>
@@ -97,6 +96,9 @@ class Feedback extends Component {
   }
 
   _finish() {
+    this.setState({
+      fix: true
+    });
     this.props.feedbackActions.end(this.state.answers);
   }
 }

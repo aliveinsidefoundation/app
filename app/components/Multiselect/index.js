@@ -39,7 +39,7 @@ export default class Multiselect extends React.Component {
               />
               <div className="auto-mark"> <i className="icon-menu"/> </div>
               { this.props.selected === 'disabled'
-                ?   '' : <SelectedItems items={this.state.selected} removeItem={this.removeItem}/> }
+                ? '' : <SelectedItems items={this.state.selected} removeItem={this.removeItem}/> }
             </div>);
   }
 

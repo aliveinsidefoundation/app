@@ -1,10 +1,5 @@
-# React + Redux
+# AIF app
 
-# Sublime Text notes
-Install packages
-- EditorConfig
-- SublimeLinter
-- SublimeLinter-contrib-eslint
 
 # Devel
 clone this repo.

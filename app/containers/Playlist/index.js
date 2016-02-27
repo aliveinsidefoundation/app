@@ -49,7 +49,7 @@ class Playlist extends React.Component {
       });
     };
     return (
-      <div className={'help-playlist-container open_'+this.state.help}>
+      <div className={'help-playlist-container open_' + this.state.help}>
         <div className="help-playlist">
           {
            this.state.help ?

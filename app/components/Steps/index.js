@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import Step from '../../components/Step';
 
 import '!style!css!sass!./index.scss';
@@ -26,18 +25,18 @@ export default class Steps extends React.Component {
       }
     };
     return (
-      <div className='steps-component'>
-        <div className='steps-navigator-by-steps'>
+      <div className="steps-component">
+        <div className="steps-navigator-by-steps">
           <ul>
             {
               this.props.children.map((child, index) => {
                 let isActive = index === this.state.currentStep ? 'active-step' : '';
-                return <li key={index} className={isActive} /*onClick={this._goToStep.bind(this, index)}*/ disabled={isDisabled(index)}>{index}</li>;
+                return <li key={index} className={isActive} disabled={isDisabled(index)}>{index}</li>;
               })
             }
           </ul>
         </div>
-        <div className='steps-content'>
+        <div className="steps-content">
           {
             React.Children.map(this.props.children, (child, index) => {
               let isActive = index === this.state.currentStep ? 'active-step' : '';
@@ -45,12 +44,12 @@ export default class Steps extends React.Component {
             })
           }
         </div>
-        <div className='steps-navigator'>
+        <div className="steps-navigator">
         {
-          this.state.currentStep > 0 ? <div className='steps-nav-prev' onClick={this._goToStep.bind(this, this.state.currentStep-1)} disabled={this.props.settings.prevStatus()}>Prev</div> : null
+          this.state.currentStep > 0 ? <div className="steps-nav-prev" onClick={this._goToStep.bind(this, this.state.currentStep-1)} disabled={this.props.settings.prevStatus()}>Prev</div> : null
         }
         {
-          this.state.currentStep < this.state.totalSteps-1 ? <div className='steps-nav-next' onClick={this._goToStep.bind(this, this.state.currentStep+1)} disabled={this.props.settings.nextStatus()}>Next</div> : null
+          this.state.currentStep < this.state.totalSteps-1 ? <div className="steps-nav-next" onClick={this._goToStep.bind(this, this.state.currentStep+1)} disabled={this.props.settings.nextStatus()}>Next</div> : null
         }
         </div>
       </div>
