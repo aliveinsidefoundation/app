@@ -99,7 +99,7 @@ class Feedback extends Component {
     this.setState({
       fix: true
     });
-    this.props.feedbackActions.end(this.state.answers);
+    this.props.feedbackActions.end(this.state.answers, this.props.app.trackComments);
   }
 }
 

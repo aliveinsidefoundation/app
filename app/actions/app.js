@@ -1,3 +1,5 @@
+import history from './../utils/history';
+
 export function setName(name) {
   return {
     type: 'APP_SET_NAME',
@@ -31,4 +33,18 @@ export function showFeedback() {
     type: 'SHOW_FEEDBACK',
     show: true
   };
+}
+
+export function setComments(comments) {
+  return {
+    type: 'SET_COMMENTS',
+    comments: comments
+  };
+}
+
+export function goToFeedback(comments) {
+  return dispatch => {
+    dispatch(setComments(comments));
+    history.get().push('/feedback');
+  }
 }

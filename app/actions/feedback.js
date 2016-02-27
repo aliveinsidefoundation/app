@@ -16,9 +16,9 @@ let sendEmail = (data) => {
   };
 };
 
-export function end(answers) {
+export function end(answers, tracks) {
   return (dispatch) => {
     dispatch(appActions.loadingOn());
-    dispatch(sendEmail(answers));
+    dispatch(sendEmail(answers, tracks));
   };
 }

@@ -2,7 +2,8 @@ let initialstate = {
   name: 'joeldemo',
   year: '',
   loading: false,
-  showFeedback: false
+  showFeedback: false,
+  trackComments: {}
 };
 
 export default (state = initialstate, action) => {
@@ -18,6 +19,9 @@ export default (state = initialstate, action) => {
       return state;
     case 'SHOW_FEEDBACK':
       state.showFeedback = action.show;
+      return state;
+    case 'SET_COMMENTS':
+      state.trackComments = action.comments;
       return state;
     default:
       return state;
