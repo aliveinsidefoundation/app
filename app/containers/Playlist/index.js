@@ -32,6 +32,7 @@ class Playlist extends React.Component {
     this._commentsChange = this._commentsChange.bind(this);
     this._popupContinue = this._popupContinue.bind(this);
     this._popupCancel = this._popupCancel.bind(this);
+    this._save = this._save.bind(this);
     this.spotify = new Spotify();
   }
 
@@ -121,7 +122,8 @@ class Playlist extends React.Component {
                 </div>
               </div>
               <div className="footer-playlist">
-                <div className="button save" onClick={this._save.bind(this)}>SAVE TO SPOTIFY</div>
+                <div className="button save" onClick={this._save}>SAVE TO SPOTIFY</div>
+                { app.showFeedback ? <a href="/#/feedback" className="end">Feedback</a> : ''}
               </div>
             </div>);
   }
@@ -189,6 +191,9 @@ class Playlist extends React.Component {
   }
 
   _save() {
+    this.setState({
+      showPopup: false
+    });
     this.props.actions.savePlaylist(this.props.songs, `${this.props.app.name}${this.props.app.year}`);
   }
 

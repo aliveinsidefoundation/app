@@ -1,7 +1,8 @@
 let initialstate = {
-  name: '',
+  name: 'joeldemo',
   year: '',
-  loading: false
+  loading: false,
+  showFeedback: false
 };
 
 export default (state = initialstate, action) => {
@@ -14,6 +15,9 @@ export default (state = initialstate, action) => {
       return state;
     case 'LOADING':
       state.loading = action.loading;
+      return state;
+    case 'SHOW_FEEDBACK':
+      state.showFeedback = action.show;
       return state;
     default:
       return state;

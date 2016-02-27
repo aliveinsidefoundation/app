@@ -27,6 +27,7 @@ class Questionnaire extends Component {
     this.spotify = new Spotify();
 
     this.state = {
+      fix: false,
       help1: false,
       year: null,
       answers: {
@@ -556,6 +557,9 @@ class Questionnaire extends Component {
   }
 
   _finish() {
+    this.setState({
+      fix: true
+    });
     let year = new Date(this.state.answers.q4);
     this.props.qActions.end(this.state.answers, year.getFullYear());
   }

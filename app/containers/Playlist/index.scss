@@ -122,6 +122,22 @@
   height: 74px;
   background: #EF7622;
 
+  .end {
+    top: 0px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 19px;
+    color: #FFFFFF;
+    line-height: 14px;
+    width: 200px;
+    height: 100%;
+    text-align: center;
+    padding: 30px;
+    right: 0px;
+    position: absolute;
+    border-left: 1px solid #D4661A;
+  }
+
   .save {
     width: 148px;
     margin: 17px auto;

@@ -25,3 +25,10 @@ export function loadingOff() {
     loading: false
   };
 }
+
+export function showFeedback() {
+  return {
+    type: 'SHOW_FEEDBACK',
+    show: true
+  };
+}

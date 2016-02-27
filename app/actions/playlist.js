@@ -11,9 +11,11 @@ export function create(songs) {
 
 export function createPlaylist(answers, year) {
   return dispatch => {
+    dispatch(appActions.loadingOn());
     let spotify = new Spotify();
     spotify.makePlaylist(answers, year).then(collectionTracks => {
       dispatch(create(collectionTracks));
+      dispatch(appActions.loadingOff());
       history.get().push('/playlist');
     });
   };
@@ -36,8 +38,10 @@ export function appendSongs(index, songs) {
 
 export function addFive(id, index) {
   return dispatch => {
+    dispatch(appActions.loadingOn());
     let spotify = new Spotify();
     spotify.getTopTracksByArtist(id).then(collectionTracks => {
+      dispatch(appActions.loadingOff());
       dispatch(appendSongs(index, collectionTracks.splice(5)));
     });
   };
@@ -67,6 +71,7 @@ export function savePlaylist(tracks, name) {
     let spotify = new Spotify();
     spotify.save(tracks, name).then(res => {
       dispatch(appActions.loadingOff());
+      dispatch(appActions.showFeedback());
     });
   };
 }
