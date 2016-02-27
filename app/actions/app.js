@@ -5,6 +5,13 @@ export function setName(name) {
   };
 }
 
+export function setYear(year) {
+  return {
+    type: 'APP_SET_YEAR',
+    year: year
+  };
+}
+
 export function loadingOn() {
   return {
     type: 'LOADING',

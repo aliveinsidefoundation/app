@@ -11,7 +11,7 @@ export function create(songs) {
 
 export function createPlaylist(answers, year) {
   return dispatch => {
-    let spotify = new Spotify('b7e5e8676be84916b431c98d51b85d5c', '5176ca36c9964509a82916d65aefc719');
+    let spotify = new Spotify();
     spotify.makePlaylist(answers, year).then(collectionTracks => {
       dispatch(create(collectionTracks));
       history.get().push('/playlist');
@@ -36,7 +36,7 @@ export function appendSongs(index, songs) {
 
 export function addFive(id, index) {
   return dispatch => {
-    let spotify = new Spotify('b7e5e8676be84916b431c98d51b85d5c', '5176ca36c9964509a82916d65aefc719');
+    let spotify = new Spotify();
     spotify.getTopTracksByArtist(id).then(collectionTracks => {
       dispatch(appendSongs(index, collectionTracks.splice(5)));
     });

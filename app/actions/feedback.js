@@ -1,9 +1,8 @@
-import * as playlist from './playlist';
 import * as appActions from './app';
 
 let sendEmail = (data) => {
   return dispatch => {
-    fetch('http://fs000430.ferozo.com/aif/index.php', {
+    fetch('http://fs000430.ferozo.com/aif/feedback.php', {
       method: "POST",
       headers: {
         "Content-type": "application/json"
@@ -17,8 +16,7 @@ let sendEmail = (data) => {
 
 export function end(answers, year) {
   return (dispatch) => {
-    appActions.loadingOn();
+    dispatch(appActions.loadingOn());
     dispatch(sendEmail(answers));
-    dispatch(playlist.createPlaylist(answers, year));
   };
 }

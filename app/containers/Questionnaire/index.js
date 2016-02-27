@@ -189,8 +189,9 @@ class Questionnaire extends Component {
   render() {
     let stepChange = (step, next) => {
       if (next) {
-        if (step === 1) {
-          this.props.appActions.setName(this.state.answers['q1']);
+        if (step === 3) {
+          this.props.appActions.setName(this.state.answers['q3']);
+          this.props.appActions.setYear(new Date(this.state.answers['q4']).getFullYear());
         }
         if (this.validateStep(step)) {
           next();
@@ -557,9 +558,6 @@ class Questionnaire extends Component {
   _finish() {
     let year = new Date(this.state.answers.q4);
     this.props.qActions.end(this.state.answers, year.getFullYear());
-    // this.spotify.makePlaylist(this.state.answers, year.getFullYear()).then(collectionTracks => {
-      // console.log(collectionTracks);
-    // });
   }
 
   _loadOptions(input, callback) {
@@ -609,4 +607,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapPropsToState, mapDispatchToProps)(Questionnaire);
-// export default Questionnaire;

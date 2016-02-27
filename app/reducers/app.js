@@ -1,6 +1,6 @@
 let initialstate = {
-  name: 'joel',
-  year: '1989',
+  name: '',
+  year: '',
   loading: false
 };
 

@@ -75,6 +75,58 @@ export default class Spotify {
     }).reverse();
   }
 
+  alternate(list) {
+    let index = 0;
+    let list_size = list.length;
+    let process = (list_process) => {
+      // Search the next item different, remove and return this.
+      let serchNextDifferent = (number) => {
+        for (let i = index + 1; i <= list_size; i++) {
+          if (list_process[i] && list_process[i].artists.first().id !== number) {
+            return list_process.splice(i, 1)[0];
+          }
+        }
+      };
+      // Search the next item different, remove and return this.
+      let serchPrevDifferent = (number, prevIndex) => {
+        for (let i = prevIndex - 1; i >= 0; i--) {
+          if (list_process[i] &&
+              list_process[i].artists.first().id !== number &&
+              list_process[i].artists.first().id !== list_process[prevIndex].artists.first().id &&
+              number !== list_process[i - 1].artists.first().id &&
+              i)
+          {
+            return list_process.splice(i, 1)[0];
+          }
+        }
+      };
+      // Check if the current item and the prev are equals
+      if (list_process[index - 1] &&
+          list_process[index - 1].artists.first().id === list_process[index].artists.first().id)
+      {
+        let next = serchNextDifferent(list_process[index].artists.first().id);
+        if (next) {
+          list_process.splice(index, 0, next);
+        } else {
+          let prev = serchPrevDifferent(list_process[index].artists.first().id, index);
+          if (prev) {
+            list_process.splice(index - 1, 0, prev);
+          } else {
+            list_process.push(list_process.splice(index, 1)[0]);
+          }
+        }
+      }
+      // next
+      if (list_size - 1 !== index) {
+        index++;
+        return process(list_process);
+      } else {
+        return list_process;
+      }
+    };
+    return process(list);
+  }
+
 
   makePlaylist(q, age) {
     return new Promise((resolve) => {
@@ -124,8 +176,9 @@ export default class Spotify {
 
       setTimeout(() => {
         Promise.all(this.promises).then(resp => {
+          console.log(resp)
           this.playlist = [].concat.apply([], resp);
-          this.playlist = this.removeDuplicates(this.playlist);
+          this.playlist = this.alternate(this.orderByPopularity(this.removeDuplicates(this.playlist)));
           resolve(this.playlist);
         });
       }, 3000);
@@ -150,7 +203,7 @@ export default class Spotify {
                     if (e === 0) {
                       total -= 1;
                       if (total === 0) {
-                        resolve(this.orderByPopularity(trackList));
+                        resolve(this.alternate(this.orderByPopularity(trackList)));
                       }
                     }
                   }
