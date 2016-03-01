@@ -9,7 +9,7 @@
   margin: 0 auto;
 
   h2 {
-    font-family: CoveredByYourGrace;
+    font-family: 'Covered By Your Grace';
       font-size: 36px;
       color: #08AAB3;
       line-height: 100px;
@@ -39,7 +39,8 @@
         .list-title {
           float: left;
           width: 50%;
-          font-family: Signika-Semibold;
+          font-family: Signika;
+          font-weight: 600;
           font-size: 16px;
           color: #4A4A4A;
           line-height: 28px;
@@ -80,7 +81,8 @@
     }
 
     .title {
-      font-family: Signika-Bold;
+      font-family: Signika;
+      font-weight: 800;
       font-size: 16px;
       color: #FFFFFF;
       line-height: 28px;
@@ -89,7 +91,8 @@
     span {
       display: block;
       clear: both;
-      font-family: Signika-Light;
+      font-family: Signika;
+      font-weight: 200;
       font-size: 16px;
       color: #FFFFFF;
       line-height: 28px;

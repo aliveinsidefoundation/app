@@ -30,7 +30,8 @@
       display: block;
       text-align: center;
       margin: 165px 0 0 0;
-      font-family: Signika-Regular;
+      font-family: Signika;
+      font-weight: 400;
 
       @media (max-width: 768px) {
         margin: 60px 0 0 0;
@@ -62,7 +63,7 @@
       padding: 10px 21px;
       color: #fff;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 400;
       margin: 0 auto;
       background: #EF7622;
       box-shadow: 0px 5px 0px 0px #BA5C1B;
@@ -145,10 +146,11 @@
         }
 
         p {
-          font-family: Signika-Light;
+          font-family: Signika;
           font-size: 16px;
           color: #585858;
           line-height: 26px;
+          font-weight: 200;
 
           @media (max-width: 768px) {
             font-size: 14px;
@@ -205,11 +207,12 @@
       }
 
       p {
-        font-family: Signika-Light;
+        font-family: Signika;
         font-size: 16px;
         color: #FFFFFF;
         line-height: 28px;
         text-align: center;
+        font-weight: 200;
 
         @media (max-width: 768px) {
           font-size: 14%;
@@ -246,7 +249,7 @@
       padding: 10px 21px;
       color: #fff;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 400;
       background: #EF7622;
       box-shadow: 0px 5px 0px 0px #BA5C1B;
       display: block;

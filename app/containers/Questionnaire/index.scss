@@ -8,7 +8,7 @@ body {
 	margin: 0 0 100px 0;
 
 	.step-title {
-		font-family: CoveredByYourGrace;
+		font-family: 'Covered By Your Grace';
 	    font-size: 36px;
 	    color: #08AAB3;
 	    line-height: 100px;
@@ -30,7 +30,8 @@ body {
 	}
 
 	label {
-		font-family: Signika-Regular;
+		font-family: Signika;
+		font-weight: 400;
 		font-size: 16px;
 		color: #585858;
 		line-height: 36px;
@@ -40,7 +41,8 @@ body {
 		background: #FFFFFF;
 	    border: 1px solid #CFCFCF;
 	    border-radius: 3px;
-	    font-family: Signika-Light;
+	    font-family: Signika;
+	    font-weight: 200;
 	    font-size: 15.85px;
 	    color: #585858;
 	    line-height: 28px;
@@ -57,7 +59,8 @@ body {
 		background: #FFFFFF;
 	    border: 1px solid #CFCFCF;
 	    border-radius: 3px;
-	    font-family: Signika-Light;
+	    font-family: Signika;
+	    font-weight: 200;
 	    font-size: 15.85px;
 	    color: #585858;
 	    line-height: 28px;
@@ -74,7 +77,8 @@ body {
 	textarea {
 		background: #FFFFFF;
 	    border-radius: 3px;
-	    font-family: Signika-Light;
+	    font-family: Signika;
+	    font-weight: 200;
 	    font-size: 15.85px;
 	    color: #585858;
 	    line-height: 28px;
@@ -115,7 +119,8 @@ body {
 		    border: 1px solid #EF7622;
 		    float: left;
 		    text-align: center;
-		    font-family: Signika-Light;
+		    font-family: Signika;
+		    font-weight: 200;
 		    font-size: 15.85px;
 		    color: #FFFFFF;
 		    line-height: 28px;
@@ -145,7 +150,8 @@ body {
 
 	.more-info {
 		display: block;
-		font-family: Signika-Light;
+		font-family: Signika;
+		font-weight: 200;
 		font-size: 12px;
 		color: #9B9B9B;
 		line-height: 18px;
@@ -168,7 +174,8 @@ body {
 }
 
 .terms {
-	font-family: Signika-Light;
+	font-family: Signika;
+	font-weight: 200;
 	font-size: 12px;
 	color: #585858;
 	line-height: 18px;
@@ -239,7 +246,8 @@ body {
 	}
 
 	.react-autosuggest__suggestion {
-		font-family: Signika-Light;
+		font-family: Signika;
+		font-weight: 200;
 		font-size: 16px;
 		color: #333333;
 		line-height: 20px;
@@ -273,7 +281,8 @@ body {
 }
 
 .btn-finish {
-	font-family: Signika-Semibold;
+	font-family: Signika;
+	font-weight: 600;
     font-size: 16px;
     color: #FFFFFF;
     line-height: 28px;
@@ -285,7 +294,8 @@ body {
 
 .nice-meet {
 	p {
-		font-family: Signika-Light;
+		font-family: Signika;
+		font-weight: 200;
 		font-size: 15.85px;
 		color: #585858;
 		line-height: 28px;
