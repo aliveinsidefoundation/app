@@ -74,13 +74,13 @@ class Player extends Component {
     return (
       <div>
         { !this.state.isPlaying && !this.state.isLoading ?
-          <img src="images/volume.svg" onClick={this._play}/> : null
+          <img src="/images/volume.svg" onClick={this._play}/> : null
         }
         { this.state.isPlaying && !this.state.isLoading ?
-          <img src="images/pause.svg" onClick={this._stop}/> : null
+          <img src="/images/pause.svg" onClick={this._stop}/> : null
         }
         { this.state.isLoading ?
-          <img src="images/tail-spin.svg" className="player-loading"/> : null
+          <img src="/images/tail-spin.svg" className="player-loading"/> : null
         }
         <audio ref="audio" src={this.props.source} preload="none"/>
       </div>
