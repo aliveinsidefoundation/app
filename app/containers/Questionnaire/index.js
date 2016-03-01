@@ -190,6 +190,11 @@ class Questionnaire extends Component {
   render() {
     let stepChange = (step, next) => {
       if (next) {
+        if (step === 1) {
+          this.setState({
+            userName: this.state.answers['q1']
+          });
+        }
         if (step === 3) {
           this.props.appActions.setName(this.state.answers['q3']);
           this.props.appActions.setYear(new Date(this.state.answers['q4']).getFullYear());
@@ -255,7 +260,7 @@ class Questionnaire extends Component {
                   <Step>
                     <div className="nice-meet">
                       <span className="step-title">
-                        Nice to meet you, {this.props.app.name}!
+                        Nice to meet you, {this.state.userName}!
                       </span>
                       <span>You are an official Music Detective! Now that we know who you are, we
                       want to get to know your elder.</span>
