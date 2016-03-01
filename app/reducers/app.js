@@ -1,5 +1,5 @@
 let initialstate = {
-  name: 'joeldemo',
+  name: '',
   year: '',
   loading: false,
   showFeedback: false,
