@@ -15,7 +15,7 @@ module.exports = ({
   },
   resolve: {
     alias: {
-      'appConfig': './env/devel-config.js'
+      'appConfig': '../../env/devel-config.js'
     },
     extensions: ['', '.js']
   },

@@ -4,15 +4,16 @@
  * getTracks({years:[1990-1991], market: 'AR', limit: 5, q: '']})
  */
 import {Client, TrackHandler, PlaylistHandler, ArtistHandler, UserHandler} from 'spotify-sdk';
+import appConfig from 'appConfig';
 
 export default class Spotify {
   constructor(spotify = {client: '', token: ''}) {
     this.client = Client.instance;
     this.client.settings = {
-      clientId: 'b7e5e8676be84916b431c98d51b85d5c',
-      secretId: '5176ca36c9964509a82916d65aefc719',
+      clientId: appConfig.SPOTIFY_CLIENT,
+      secretId: appConfig.SPOTIFY_TOKEN,
       scopes: 'playlist-modify-public playlist-modify-private',
-      redirect_uri: 'http://localhost:8080/login'
+      redirect_uri: appConfig.SPOTIFY_REDIRECT
     };
     this.track = new TrackHandler();
     this.artist = new ArtistHandler();
