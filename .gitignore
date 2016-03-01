@@ -1,4 +1,5 @@
 node_modules
 dist
+public/dist
 *.sublime-*
 env/prod-config.js
