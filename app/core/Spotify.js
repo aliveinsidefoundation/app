@@ -235,7 +235,7 @@ export default class Spotify {
             this.user.me().then((userEntity) => {
               this.playlistHandler.create(userEntity.id, playlistName, false).then((myPlaylist) => {
                 myPlaylist.addTrack(tracks).then(() => {
-                  resolve({ ok: true });
+                  resolve(myPlaylist);
                 });
               }).catch(() => {
                 resolve({ ok: false });

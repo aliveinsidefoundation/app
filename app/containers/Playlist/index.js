@@ -9,6 +9,7 @@ import TrackItem from '../../components/TrackItem';
 import Multiselect from '../../components/Multiselect';
 import Popup from '../../components/Popup';
 import Loading from '../../components/Loading';
+import PupupAlert from '../../components/PopupAlert';
 
 import * as playlistActions from '../../actions/playlist';
 import * as appActions from '../../actions/app';
@@ -34,11 +35,12 @@ class Playlist extends React.Component {
     this._popupCancel = this._popupCancel.bind(this);
     this._save = this._save.bind(this);
     this._goToFeedback = this._goToFeedback.bind(this);
+    this._closePopup = this._closePopup.bind(this);
     this.spotify = new Spotify();
   }
 
   componentDidMount() {
-    if (!this.props.songs.length) {
+    if (!this.props.playlist.songs.length) {
       this.props.history.push('/');
     }
   }
@@ -72,7 +74,7 @@ class Playlist extends React.Component {
   }
 
   render() {
-    let { songs, actions, app } = this.props;
+    let { playlist, actions, app } = this.props;
     return (<div>
               { app.loading ? <Loading/> : ''}
               { this.state.showPopup ?
@@ -81,6 +83,25 @@ class Playlist extends React.Component {
                   cancel={this._popupCancel}
                   track={this.state.currentTrack}
                 /> : ''}
+                { playlist.popupSuccess ?
+                  <PupupAlert type="success">
+                  <span>Playlist Saved Saved</span>
+                  <a href={playlist.uri} className="button create-playlist">
+                    Go to playlist
+                  </a>
+                  <div className="button cancel" onClick={this._closePopup}>
+                    CANCEL
+                  </div>
+                </PupupAlert>
+                  : ''}
+                { playlist.popupError ?
+                <PupupAlert type="error">
+                  <span>Ups! Something may be wrong</span>
+                  <div className="button cancel" onClick={this._closePopup}>
+                    CLOSE
+                  </div>
+                </PupupAlert>
+                : '' }
               <Header/>
               {this.help()}
               <div id="container" className="playlist">
@@ -103,7 +124,7 @@ class Playlist extends React.Component {
                       <div className="list-title">Artist</div>
                     </li>
                     {
-                      songs.map((item, index) => {
+                      playlist.songs.map((item, index) => {
                         return (
                           <li key={item.id}>
                             <TrackItem
@@ -127,6 +148,11 @@ class Playlist extends React.Component {
                 <div className="end" onClick={this._goToFeedback}>Feedback</div>
               </div>
             </div>);
+  }
+
+  _closePopup() {
+    this.props.actions.closePopupSuccess();
+    this.props.actions.closePopupError();
   }
 
   _add(item) {
@@ -195,7 +221,7 @@ class Playlist extends React.Component {
     this.setState({
       showPopup: false
     });
-    this.props.actions.savePlaylist(this.props.songs, `${this.props.app.name}${this.props.app.year}`);
+    this.props.actions.savePlaylist(this.props.playlist.songs, `${this.props.app.name}${this.props.app.year}`);
   }
 
   _goToFeedback() {
@@ -206,7 +232,7 @@ class Playlist extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
-    songs: state.playlist,
+    playlist: state.playlist,
     app: state.app
   };
 };

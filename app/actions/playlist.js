@@ -70,8 +70,40 @@ export function savePlaylist(tracks, name) {
     dispatch(appActions.loadingOn());
     let spotify = new Spotify();
     spotify.save(tracks, name).then(res => {
+      dispatch(setPlaylistURI(res.uri));
       dispatch(appActions.loadingOff());
-      dispatch(appActions.showFeedback());
+      dispatch(showPopupSuccess());
     });
+  };
+}
+
+export function showPopupError() {
+  return {
+    type: 'POPUP_SHOW_ERROR'
+  };
+}
+
+export function closePopupError() {
+  return {
+    type: 'POPUP_CLOSE_ERROR'
+  };
+}
+
+export function showPopupSuccess() {
+  return {
+    type: 'POPUP_SHOW_SUCCESS'
+  };
+}
+
+export function closePopupSuccess() {
+  return {
+    type: 'POPUP_CLOSE_SUCCESS'
+  };
+}
+
+export function setPlaylistURI(uri) {
+  return {
+    type: 'PLAYLIST_SET_URI',
+    uri: uri
   };
 }
