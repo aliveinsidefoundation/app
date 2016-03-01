@@ -14,7 +14,7 @@ module.exports = ({
   },
   resolve: {
     alias: {
-      'appConfig': './env/prod-config.js'
+      'appConfig': '../../env/prod-config.js'
     },
     extensions: ['', '.js']
   },
