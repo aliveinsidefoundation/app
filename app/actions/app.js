@@ -45,6 +45,6 @@ export function setComments(comments) {
 export function goToFeedback(comments) {
   return dispatch => {
     dispatch(setComments(comments));
-    history.get().push('/feedback');
+    history.get().pushState(null, '/feedback');
   }
 }

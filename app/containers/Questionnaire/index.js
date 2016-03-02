@@ -262,10 +262,10 @@ class Questionnaire extends Component {
                       <span className="step-title">
                         Nice to meet you, {this.state.userName}!
                       </span>
-                      <span>You are an official Music Detective! Now that we know who you are, we
+                      <span>You are an official Memory Detective! Now that we know who you are, we
                       want to get to know your elder.</span>
                       <p>The answers to the questions will generate a playlist, but don’t worry if
-                      you aren’t able to answer every questions. That’s OK!  </p>
+                      you aren’t able to answer every question. That’s OK!  </p>
                       <p>Look for the + along the way for prompts to help you get more detailed answers.</p>
                     </div>
                   </Step>
@@ -463,7 +463,7 @@ class Questionnaire extends Component {
                       <div className="form-input">
                         <label>Were you raised religious? If so, what religion? </label>
                         <select ref="q19" name="q19" onChange={this._questionChange}>
-                          <option value="Christian">Christian</option>
+                          <option value="Christianity">Christianity</option>
                           <option value="Islamic">Islamic</option>
                           <option value="Not">Not Religious</option>
                           <option value="Hinduism">Hinduism</option>

@@ -54,7 +54,7 @@ class Home extends React.Component {
                     <div className="whats-item back-organge">
                       <img src="/images/brain-02.png"/>
                       <span>Why music?</span>
-                      <p>Music affects the brain and body unlike anything else it accesses multiple parts of the brain, and miraculously stays strong, almost to the  end. Music and Human Connection are unparalleled and often ignored tools for restoring memory and identity.</p>
+                      <p>Music affects the brain and body unlike anything else.It accesses multiple parts of the brain, and miraculously stays strong, almost to the  end. Music and Human Connection are unparalleled and often ignored tools for restoring memory and identity.</p>
                     </div>
                   </div>
                   <div className="home-message">

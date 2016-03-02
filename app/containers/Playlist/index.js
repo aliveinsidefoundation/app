@@ -86,7 +86,7 @@ class Playlist extends React.Component {
                 { playlist.popupSuccess ?
                   <PupupAlert type="success">
                   <span>Playlist Saved Saved</span>
-                  <a href={playlist.uri} className="button create-playlist">
+                  <a href={playlist.uri} target="_blank" className="button create-playlist">
                     Go to playlist
                   </a>
                   <div className="button cancel" onClick={this._closePopup}>

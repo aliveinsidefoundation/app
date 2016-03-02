@@ -70,7 +70,7 @@ export function savePlaylist(tracks, name) {
     dispatch(appActions.loadingOn());
     let spotify = new Spotify();
     spotify.save(tracks, name).then(res => {
-      dispatch(setPlaylistURI(res.uri));
+      dispatch(setPlaylistURI(res.external_urls.spotify));
       dispatch(appActions.loadingOff());
       dispatch(showPopupSuccess());
     });

@@ -177,7 +177,6 @@ export default class Spotify {
 
       setTimeout(() => {
         Promise.all(this.promises).then(resp => {
-          console.log(resp)
           this.playlist = [].concat.apply([], resp);
           this.playlist = this.alternate(this.orderByPopularity(this.removeDuplicates(this.playlist)));
           resolve(this.playlist);
