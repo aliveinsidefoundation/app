@@ -138,23 +138,25 @@ class Questionnaire extends Component {
 
   validateStep(step) {
     let globalValid = true;
-    let qs = Object.keys(this.state.questions[step - 1]);
+    let qs = this.state.questions[step - 1];
 
-    qs.map(key => {
-      let elem = this.refs[key];
-      let isValid = true;
-      if (elem && elem.checkValidity) {
-        isValid = elem.checkValidity();
-      }
-      let newState = this.state.questions;
-      newState[step - 1][key].valid = isValid;
-      this.setState({
-        questions: newState
+    if (qs) {
+      Object.keys(qs).map(key => {
+        let elem = this.refs[key];
+        let isValid = true;
+        if (elem && elem.checkValidity) {
+          isValid = elem.checkValidity();
+        }
+        let newState = this.state.questions;
+        newState[step - 1][key].valid = isValid;
+        this.setState({
+          questions: newState
+        });
+        if (!isValid) {
+          globalValid = false;
+        }
       });
-      if (!isValid) {
-        globalValid = false;
-      }
-    });
+    }
 
     return globalValid;
   }
