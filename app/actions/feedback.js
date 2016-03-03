@@ -19,6 +19,6 @@ let sendEmail = (data) => {
 export function end(answers, tracks) {
   return (dispatch) => {
     dispatch(appActions.loadingOn());
-    dispatch(sendEmail(answers, tracks));
+    dispatch(sendEmail(Object.assign(answers, {comments: tracks})));
   };
 }
