@@ -178,7 +178,9 @@ export default class Spotify {
       setTimeout(() => {
         Promise.all(this.promises).then(resp => {
           this.playlist = [].concat.apply([], resp);
-          this.playlist = this.alternate(this.orderByPopularity(this.removeDuplicates(this.playlist)));
+          this.playlist = this.alternate(
+            this.orderByPopularity(this.removeDuplicates(this.cleanBadSongs(this.playlist)))
+          );
           resolve(this.playlist);
         });
       }, 3000);
@@ -203,7 +205,7 @@ export default class Spotify {
                     if (e === 0) {
                       total -= 1;
                       if (total === 0) {
-                        resolve(this.alternate(this.orderByPopularity(trackList)));
+                        resolve(this.alternate(this.orderByPopularity(this.cleanBadSongs(trackList))));
                       }
                     }
                   }
@@ -216,6 +218,12 @@ export default class Spotify {
           }
         });
       });
+    });
+  }
+
+  cleanBadSongs(tracks) {
+    return tracks.filter(item => {
+      return !(/[-[(]/.test(item.name));
     });
   }
 
