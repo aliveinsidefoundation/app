@@ -62,7 +62,7 @@
       padding: 10px 21px;
       color: #EF7622;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 400;
       margin: 33px auto 0;
       width: 197px;
       text-decoration: none;
@@ -86,7 +86,7 @@
       }
 
     .video-title {
-      font-family: 'Covered By Your Grace', cursive;
+      font-family: 'Shadows Into Light Two', cursive;
       background: #08AAB3;
       color: #fff;
       padding: 10px;
@@ -113,6 +113,12 @@
         width: 100%;
         float: left;
       }
+
+      .award {
+        width: 300px;
+        margin: 20px auto 0;
+        display: block;
+      }
     }
   }
 
@@ -126,7 +132,7 @@
     }
 
     span {
-      font-family: 'Covered By Your Grace', cursive;
+      font-family: 'Shadows Into Light Two', cursive;
       font-size: 30px;
       color: #EF7622;
       line-height: 40px;
@@ -146,7 +152,7 @@
       padding: 10px 21px;
       color: #fff;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 400;
       background: #EF7622;
       box-shadow: 0px 5px 0px 0px #BA5C1B;
       display: block;

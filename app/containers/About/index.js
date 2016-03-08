@@ -25,6 +25,7 @@ class About extends React.Component {
               <div className="video-container">
                 <div className="video-title">The film that started it all…</div>
                 <iframe src="https://www.youtube.com/embed/IaB5Egej0TQ" frameBorder="0" allowFullScreen></iframe>
+                <img src="/images/sundance.png" className="award"/>
               </div>
             </div>
             <div className="about-message">
