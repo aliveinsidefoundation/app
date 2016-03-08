@@ -7,10 +7,12 @@ import Questionnaire from './containers/Questionnaire';
 import Playlist from './containers/Playlist';
 import Feedback from './containers/Feedback';
 
-export default (<Router>
-                  <Route path='/' component={Home} />
-                  <Route path='about' component={About} />
-                  <Route path='questionnaire' component={Questionnaire} />
-                  <Route path='playlist' component={Playlist} />
-                  <Route path='feedback' component={Feedback} />
-               </Router>);
+export default (
+  <Router>
+    <Route path='/' component={Home} />
+    <Route path='about' component={About} />
+    <Route path='questionnaire' component={Questionnaire} />
+    <Route path='playlist' component={Playlist} />
+    <Route path='feedback' component={Feedback} />
+  </Router>
+  );

@@ -19,34 +19,36 @@ export default class TrackItem extends Component {
   }
 
   render() {
-    return (<div className={'trackitem note_' + this.state.open}>
-              <div className="item">
-                <div className="open" onClick={this._open}>></div>
-                <div className="player">
-                  <Player
-                    source={this.props.track.preview_url}
-                    ptag={this.props.audio}
-                    stopAll={this.props.stopAll}
-                  />
-                </div>
-                <div className="name" onClick={this._open}>{this.props.track.name}</div>
-              </div>
-              <div className="item">
-                <div className="artist" onClick={this._open}>{this.props.track.artists[0].name}</div>
-                <div className="buttons">
-                  <span onClick={this._onPlus}>+5</span>
-                  <i onClick={this._onRemove} className="icon-cross"></i>
-                  <i onClick={this._onReload} className="icon-reload"></i>
-                </div>
-              </div>
-              <div className="notes">
-                <textarea
-                  onChange={this._onChange}
-                  placeholder="Record any memories that your elder noted during this song"
-                >
-                </textarea>
-              </div>
-            </div>);
+    return (
+      <div className={'trackitem note_' + this.state.open}>
+        <div className="item">
+          <div className="open" onClick={this._open}>></div>
+          <div className="player">
+            <Player
+              source={this.props.track.preview_url}
+              ptag={this.props.audio}
+              stopAll={this.props.stopAll}
+            />
+          </div>
+          <div className="name" onClick={this._open}>{this.props.track.name}</div>
+        </div>
+        <div className="item">
+          <div className="artist" onClick={this._open}>{this.props.track.artists[0].name}</div>
+          <div className="buttons">
+            <span onClick={this._onPlus}>+5</span>
+            <i onClick={this._onRemove} className="icon-cross"></i>
+            <i onClick={this._onReload} className="icon-reload"></i>
+          </div>
+        </div>
+        <div className="notes">
+          <textarea
+            onChange={this._onChange}
+            placeholder="Record any memories that your elder noted during this song"
+          >
+          </textarea>
+        </div>
+      </div>
+      );
   }
 
   _open() {

@@ -30,9 +30,7 @@ class Questionnaire extends Component {
       fix: false,
       help1: false,
       year: null,
-      answers: {
-
-      },
+      answers: {},
       questions: {
         0: {
           q1: {

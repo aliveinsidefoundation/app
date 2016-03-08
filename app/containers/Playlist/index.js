@@ -75,79 +75,81 @@ class Playlist extends React.Component {
 
   render() {
     let { playlist, actions, app } = this.props;
-    return (<div>
-              { app.loading ? <Loading/> : ''}
-              { this.state.showPopup ?
-                <Popup
-                  continue={this._popupContinue}
-                  cancel={this._popupCancel}
-                  track={this.state.currentTrack}
-                /> : ''}
-                { playlist.popupSuccess ?
-                  <PupupAlert type="success">
-                  <span>Playlist Saved Saved</span>
-                  <a href={playlist.uri} target="_blank" className="button create-playlist">
-                    Go to playlist
-                  </a>
-                  <div className="button cancel" onClick={this._closePopup}>
-                    CANCEL
-                  </div>
-                </PupupAlert>
-                  : ''}
-                { playlist.popupError ?
-                <PupupAlert type="error">
-                  <span>Ups! Something may be wrong</span>
-                  <div className="button cancel" onClick={this._closePopup}>
-                    CLOSE
-                  </div>
-                </PupupAlert>
-                : '' }
-              <Header/>
-              {this.help()}
-              <div id="container" className="playlist">
-                <div className="wrap-container">
-                  <h2>{app.name}’s Playlist [{app.name}{app.year}]</h2>
-                  <div>
-                    <div className="form-input">
-                      <Multiselect
-                        selected="disabled"
-                        loadOptions={this._loadOptions.bind(this)}
-                        ref="q9"
-                        name="q9"
-                        onChange={this._onChange.bind(this)}
-                        />
-                    </div>
-                  </div>
-                  <ul>
-                    <li className="titles">
-                      <div className="list-title">Song</div>
-                      <div className="list-title">Artist</div>
+    return (
+      <div>
+        { app.loading ? <Loading/> : ''}
+        { this.state.showPopup ?
+          <Popup
+            continue={this._popupContinue}
+            cancel={this._popupCancel}
+            track={this.state.currentTrack}
+          /> : ''}
+          { playlist.popupSuccess ?
+            <PupupAlert type="success">
+            <span>Playlist Saved Saved</span>
+            <a href={playlist.uri} target="_blank" className="button create-playlist">
+              Go to playlist
+            </a>
+            <div className="button cancel" onClick={this._closePopup}>
+              CANCEL
+            </div>
+          </PupupAlert>
+            : ''}
+          { playlist.popupError ?
+          <PupupAlert type="error">
+            <span>Ups! Something may be wrong</span>
+            <div className="button cancel" onClick={this._closePopup}>
+              CLOSE
+            </div>
+          </PupupAlert>
+          : '' }
+        <Header/>
+        {this.help()}
+        <div id="container" className="playlist">
+          <div className="wrap-container">
+            <h2>{app.name}’s Playlist [{app.name}{app.year}]</h2>
+            <div>
+              <div className="form-input">
+                <Multiselect
+                  selected="disabled"
+                  loadOptions={this._loadOptions.bind(this)}
+                  ref="q9"
+                  name="q9"
+                  onChange={this._onChange.bind(this)}
+                  />
+              </div>
+            </div>
+            <ul>
+              <li className="titles">
+                <div className="list-title">Song</div>
+                <div className="list-title">Artist</div>
+              </li>
+              {
+                playlist.songs.map((item, index) => {
+                  return (
+                    <li key={item.id}>
+                      <TrackItem
+                        track={item}
+                        onChange={ this._commentsChange }
+                        onRemove={() => {actions.remove(item.id)}}
+                        onPlus={() => actions.addFive(item.artists[0].id, index)}
+                        onReload={() => {this._showPopup(item)}}
+                        stopAll={this._stopAll}
+                        audio={this._add}
+                      />
                     </li>
-                    {
-                      playlist.songs.map((item, index) => {
-                        return (
-                          <li key={item.id}>
-                            <TrackItem
-                              track={item}
-                              onChange={ this._commentsChange }
-                              onRemove={() => {actions.remove(item.id)}}
-                              onPlus={() => actions.addFive(item.artists[0].id, index)}
-                              onReload={() => {this._showPopup(item)}}
-                              stopAll={this._stopAll}
-                              audio={this._add}
-                            />
-                          </li>
-                        );
-                      })
-                    }
-                  </ul>
-                </div>
-              </div>
-              <div className="footer-playlist">
-                <div className="button save" onClick={this._save}>SAVE TO SPOTIFY</div>
-                <div className="end" onClick={this._goToFeedback}>Feedback</div>
-              </div>
-            </div>);
+                  );
+                })
+              }
+            </ul>
+          </div>
+        </div>
+        <div className="footer-playlist">
+          <div className="button save" onClick={this._save}>SAVE TO SPOTIFY</div>
+          <div className="end" onClick={this._goToFeedback}>Feedback</div>
+        </div>
+      </div>
+      );
   }
 
   _closePopup() {

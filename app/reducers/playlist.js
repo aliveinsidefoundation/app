@@ -1,4 +1,3 @@
-// const initState = [];
 const initState = {
   songs: [],
   popupSuccess: false,
