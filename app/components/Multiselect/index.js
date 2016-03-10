@@ -15,7 +15,7 @@ export default class Multiselect extends React.Component {
     this.state = {
       selected: {},
       disabledMax: false,
-      placeholder: ''
+      placeholder: this.props.placeholder || ''
     };
     this.getSuggestions = this.getSuggestions.bind(this);
     this.onSuggestionSelected = this.onSuggestionSelected.bind(this);

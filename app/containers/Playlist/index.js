@@ -115,6 +115,7 @@ class Playlist extends React.Component {
                   loadOptions={this._loadOptions.bind(this)}
                   ref="q9"
                   name="q9"
+                  placeholder="Add additional tracks here!"
                   onChange={this._onChange.bind(this)}
                   />
               </div>
