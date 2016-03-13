@@ -133,18 +133,22 @@ export default class Spotify {
     return new Promise((resolve) => {
       let { q11, q12, q13 } = q;
       let list = [];
+      let secureTracks = [];
 
       if (q11) {
+        secureTracks.push(q11[Object.keys(q11)]);
         q11.age = this.ages(age).child;
         list.push(q11);
       }
 
       if (q12) {
+        secureTracks.push(q12[Object.keys(q12)]);
         q12.age = this.ages(age).teenager;
         list.push(q12);
       }
 
       if (q13) {
+        secureTracks.push(q13[Object.keys(q13)]);
         q13.age = this.ages(age).adult;
         list.push(q13);
       }
@@ -175,11 +179,30 @@ export default class Spotify {
         this.promises.push(this.getTrack(id));
       });
 
+      let securePromises = [];
+
+      secureTracks.map(id => {
+        securePromises.push(this.getTrack(id.id));
+      });
+
       setTimeout(() => {
-        Promise.all(this.promises).then(resp => {
-          this.playlist = [].concat.apply([], resp);
+        let promises = this.promises.concat(securePromises);
+        let secureTracks = [];
+        Promise.all(promises).then(resp => {
+          let myPlay = resp.filter(item => {
+            if (Array.isArray(item)) {
+              return item;
+            } else {
+              secureTracks.push(item);
+            }
+          });
+          this.playlist = [].concat.apply([], myPlay);
           this.playlist = this.alternate(
             this.orderByPopularity(this.removeDuplicates(this.cleanBadSongs(this.playlist)))
+          );
+          this.playlist = this.playlist.concat(secureTracks);
+          this.playlist = this.alternate(
+            this.orderByPopularity(this.removeDuplicates(this.playlist))
           );
           resolve(this.playlist);
         });

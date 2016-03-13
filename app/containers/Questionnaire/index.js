@@ -493,7 +493,7 @@ class Questionnaire extends Component {
                       <span className="step-title">Music memories. Ask your elder:</span>
                       <div className="form-input">
                         <label>
-                          Imagine you’re a kid in your parent’s car or in the first care you owned.
+                          Imagine you’re a kid in your parent’s car or in the first car you owned.
                           What’s on the radio?
                         </label>
                         <Multiselect

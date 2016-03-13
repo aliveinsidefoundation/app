@@ -66,10 +66,9 @@ class Home extends React.Component {
         </div>
         <div className="social-networks-container">
           <div className="social-networks">
-            <a href="#"><img src="/images/google-icon.png"/></a>
-            <a href="#"><img src="/images/facebook-icon.png"/></a>
-            <a href="#"><img src="/images/twitter-icon.png"/></a>
-            <a href="#"><img src="/images/instagram-icon.png"/></a>
+            <a href="https://plus.google.com/103387524101319577826/posts"><img src="/images/google-icon.png"/></a>
+            <a href="https://www.facebook.com/BeAliveInside"><img src="/images/facebook-icon.png"/></a>
+            <a href="https://twitter.com/AliveInsideFilm"><img src="/images/twitter-icon.png"/></a>
           </div>
         </div>
         <Footer/>
