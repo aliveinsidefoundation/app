@@ -464,6 +464,7 @@ class Questionnaire extends Component {
                         <label>Were you raised religious? If so, what religion? </label>
                         <select ref="q19" name="q19" onChange={this._questionChange}>
                           <option value="Christianity">Christianity</option>
+                          <option value="Catholic">Catholic</option>
                           <option value="Islamic">Islamic</option>
                           <option value="Not">Not Religious</option>
                           <option value="Hinduism">Hinduism</option>
@@ -536,7 +537,7 @@ class Questionnaire extends Component {
                           />
                       </div>
                       <div className="btn-finish" onClick={this._finish.bind(this)}>
-                        The interview is done! Press submit to generate your elder’s playlist.
+                        The interview is done! Press here to generate your elder’s playlist. (This can take a minute or two!)
                       </div>
                     </div>
                   </Step>

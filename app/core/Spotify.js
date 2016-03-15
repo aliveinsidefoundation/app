@@ -77,6 +77,9 @@ export default class Spotify {
   }
 
   alternate(list) {
+    if (list.length === 1) {
+      return list;
+    }
     let index = 0;
     let list_size = list.length;
     let process = (list_process) => {
@@ -186,25 +189,26 @@ export default class Spotify {
       });
 
       setTimeout(() => {
-        let promises = this.promises.concat(securePromises);
-        let secureTracks = [];
-        Promise.all(promises).then(resp => {
-          let myPlay = resp.filter(item => {
-            if (Array.isArray(item)) {
-              return item;
-            } else {
-              secureTracks.push(item);
-            }
-          });
-          this.playlist = [].concat.apply([], myPlay);
-          this.playlist = this.alternate(
-            this.orderByPopularity(this.removeDuplicates(this.cleanBadSongs(this.playlist)))
-          );
-          this.playlist = this.playlist.concat(secureTracks);
-          this.playlist = this.alternate(
-            this.orderByPopularity(this.removeDuplicates(this.playlist))
-          );
-          resolve(this.playlist);
+        Promise.all(this.promises).then(response => {
+          this.playlist = [].concat.apply([], response);
+
+          if (this.playlist.length > 1) {
+            this.playlist = this.alternate(
+              this.orderByPopularity(this.removeDuplicates(this.cleanBadSongs(this.playlist)))
+            );
+          }
+
+          if (securePromises.length) {
+            Promise.all(securePromises).then(response => {
+              this.playlist = this.playlist.concat(response);
+              this.playlist = this.alternate(
+                this.orderByPopularity(this.removeDuplicates(this.playlist))
+              );
+              resolve(this.playlist);
+            });
+          } else {
+            resolve(this.playlist);
+          }
         });
       }, 3000);
     });
