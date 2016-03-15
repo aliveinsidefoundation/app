@@ -393,7 +393,7 @@ class Questionnaire extends Component {
                   </Step>
                   <Step>
                     <div>
-                      <span className="step-title">Heritage music. Ask your elder:</span>
+                      <span className="step-title">Ethnic eritage music. Ask your elder:</span>
                       <div className="form-input">
                         <label>What is your heritage? </label>
                         <input
@@ -404,7 +404,7 @@ class Questionnaire extends Component {
                         />
                       </div>
                       <div className="form-input hidden">
-                        <label>Is your heritage music important to you?</label>
+                        <label>Is your ethnic heritage music important to you?</label>
                         <div className="radio-button">
                             <label htmlFor="radio-yes">
                               <input
@@ -427,7 +427,7 @@ class Questionnaire extends Component {
                         </div>
                       </div>
                       <div className="form-input">
-                        <label>What genres of music are part of your heritage? </label>
+                        <label>What genres of music are part of your ethnic heritage? </label>
                         <input
                           type="text"
                           ref="q16"
