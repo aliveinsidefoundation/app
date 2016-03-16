@@ -5,7 +5,10 @@ body {
 }
 
 .questionnaire-section {
-	margin: 0 0 100px 0;
+
+	.wrap-container {
+		max-width: none;
+	}
 
 	.step-title {
 		font-family: 'Shadows Into Light Two', cursive;
@@ -18,7 +21,12 @@ body {
 	}
 
 	.steps-content {
-		margin: 0 0 230px 0;
+		max-width: 610px;
+		margin: 0 auto 150px auto;
+	}
+
+	.steps-component {
+		max-width: none;
 	}
 }
 
@@ -187,7 +195,7 @@ body {
 }
 
 .steps-navigator {
-	position: fixed;
+	position: relative;
     width: 100%;
     left: 0px;
     bottom: 0px;
