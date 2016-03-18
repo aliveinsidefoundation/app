@@ -139,19 +139,25 @@ export default class Spotify {
       let secureTracks = [];
 
       if (q11) {
-        secureTracks.push(q11[Object.keys(q11)]);
+        Object.keys(q11).map(key => {
+          secureTracks.push(q11[key]);
+        });
         q11.age = this.ages(age).child;
         list.push(q11);
       }
 
       if (q12) {
-        secureTracks.push(q12[Object.keys(q12)]);
+        Object.keys(q12).map(key => {
+          secureTracks.push(q12[key]);
+        });
         q12.age = this.ages(age).teenager;
         list.push(q12);
       }
 
       if (q13) {
-        secureTracks.push(q13[Object.keys(q13)]);
+        Object.keys(q13).map(key => {
+          secureTracks.push(q13[key]);
+        });
         q13.age = this.ages(age).adult;
         list.push(q13);
       }
