@@ -262,7 +262,7 @@ class Questionnaire extends Component {
                       <span className="step-title">
                         Nice to meet you, {this.state.userName}!
                       </span>
-                      <span>You are an official Memory Detective! Now that we know who you are, we
+                      <span>You are an official Alive Inside Memory Detective! Now that we know who you are, we
                       want to get to know your elder.</span>
                       <p>The answers to the questions will generate a playlist, but don’t worry if
                       you aren’t able to answer every question. That’s OK!  </p>
