@@ -194,6 +194,22 @@ export default class Spotify {
         securePromises.push(this.getTrack(id.id));
       });
 
+      /*
+       * If q20, q11, q12 and q13 are empty, make a playlist based in a single song
+       */
+      if (!q.q20 && !q.q11 && !q.q12 && !q.q13) {
+        let superTracks = Object.assign({}, q.q9, q.q21, q.q22, q.q23, q.q24);
+        let superTrack = Object.keys(superTracks)[0];
+        if (superTrack) {
+          let promise = this.makePlaylistBasedSong(superTracks[superTrack].artist.id).then(trackCollection => {
+            return trackCollection.map(track => {
+              return track;
+            });
+          });
+          this.promises.push(promise);
+        }
+      }
+
       setTimeout(() => {
         Promise.all(this.promises).then(response => {
           this.playlist = [].concat.apply([], response);
