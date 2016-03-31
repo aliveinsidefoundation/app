@@ -274,7 +274,7 @@ class Questionnaire extends Component {
                       <span className="step-title">Interview time! Ask your elder:</span>
 
                       <div className={'form-input ' + this.state.questions[2].q3.valid}>
-                        <label>Whats your name?*</label>
+                        <label>What's your name? (Elder's name)*</label>
                         <label className="error-label">Your name is required</label>
                         <input
                           type="text"
