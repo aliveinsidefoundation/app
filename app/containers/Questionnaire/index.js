@@ -347,7 +347,7 @@ class Questionnaire extends Component {
                           onChange={this._multiChange}
                           />
                       </div>
-                      <div className="form-input">
+                      <div className="form-input" style={{display:'none'}}>
                         <label>What was the first record you bought?</label>
                         <input
                           type="text"

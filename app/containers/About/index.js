@@ -17,7 +17,7 @@ class About extends React.Component {
           <div className="wrap-container">
             <div className="about-foundation">
               <img src="/images/logo.png"/>
-              <p>The Alive Inside Foundation is the brain child of documentarian Michael Rossato-Bennett,  born out of working on a film music's power to reach into the minds of those living with dementia his life was changed.  Alive Inside received an over whelming response.  The power of music and more interesting to him, the power of human connection to heal fascinated him.  He created The Alive Inside Foundation to create the deeper healing this work calls for but is not happening.  The Foundation is dedicated to expanding human connection by empowering meaningful, shared experiences that bring the generations together, awaken memories, and spark aliveness.</p>
+              <p>The Alive Inside Foundation is the brain child of documentarian Michael Rossato-Bennett. Working on 'Alive Inside,' a film about music's power to reach into the minds of those living with dementia, his life was changed forever. Fascinated by the power of music and and human connection to heal he created The Alive Inside Foundation. The Foundation is dedicated to expanding human connection and empowering transformational, shared experiences that bring the generations together, awaken memories, and spark aliveness.</p>
               <span>Visit our website for more information on the Foundation.</span>
               <a className="button goto" href="http://aliveinside.org/" target="_blank">GO TO ALIVEINSIDE.ORG</a>
             </div>
