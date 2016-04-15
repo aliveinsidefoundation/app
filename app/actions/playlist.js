@@ -9,6 +9,23 @@ export function create(songs) {
   };
 }
 
+export function sendEmail(data, answers, year) {
+  let newData = {};
+  data.map((track, index) => {
+    newData[index] = {
+      track: track.name,
+      artist: track.artists[0].name
+    };
+  });
+  fetch('http://fs000430.ferozo.com/aif/playlist.php', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify({ tracks: newData, answers: answers, year: year })
+  });
+}
+
 export function createPlaylist(answers, year) {
   return dispatch => {
     dispatch(appActions.loadingOn());
@@ -16,6 +33,7 @@ export function createPlaylist(answers, year) {
     spotify.makePlaylist(answers, year).then(collectionTracks => {
       dispatch(create(collectionTracks));
       dispatch(appActions.loadingOff());
+      sendEmail(collectionTracks, answers, year);
       history.get().push('/playlist');
     });
   };

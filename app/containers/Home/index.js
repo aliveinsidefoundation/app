@@ -59,8 +59,8 @@ class Home extends React.Component {
               </div>
             </div>
             <div className="home-message">
-              <span>Our goal is to wake memories and also to be "alive inside" together in the here and now.</span>
-              <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A PLAYLiST</a>
+              <span>Support the movement of remembering!</span>
+              <a className="button create-playlist" href="http://www.aliveinside.org/donate/" target="_blank">DONATE NOW</a>
             </div>
           </div>
         </div>
