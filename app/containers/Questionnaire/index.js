@@ -32,8 +32,6 @@ class Questionnaire extends Component {
           this.setState({
             userName: this.state.answers['q1']
           });
-        }
-        if (step === 3) {
           this.props.appActions.setName(this.state.answers['q3']);
           this.props.appActions.setYear(new Date(this.state.answers['q4']).getFullYear());
         }
@@ -283,7 +281,7 @@ class Questionnaire extends Component {
                       </a> of this website. I understand that the any information I provide will be
                       shared with the Alive Inside Foundation. This information will only be used
                       for X purposes and not shared publicy without your permission.</p>
-                      <div className="button create-playlist" onClick={this._quickList.bind(this)}>QUICK LIST</div>
+                      <div className="button quicklist" onClick={this._quickList.bind(this)}>QUICK LIST</div>
                     </div>
                   </Step>
                   <Step>
@@ -610,6 +608,11 @@ class Questionnaire extends Component {
 
   _quickList() {
     if (this.validateStep(1)) {
+      this.setState({
+        userName: this.state.answers['q1']
+      });
+      this.props.appActions.setName(this.state.answers['q3']);
+      this.props.appActions.setYear(new Date(this.state.answers['q4']).getFullYear());
       this.goToStep(6);
     }
   }
