@@ -6,6 +6,24 @@ body {
 
 .questionnaire-section {
 
+	.create-playlist {
+      padding: 10px 21px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 400;
+      margin: 20px auto 0;
+      background: #EF7622;
+      box-shadow: 0px 5px 0px 0px #BA5C1B;
+      width: 180px;
+      display: block;
+      text-decoration: none;
+      text-align: center;
+
+      &:hover {
+        background: $black-orange;
+      }
+    }
+
 	.wrap-container {
 		max-width: none;
 	}

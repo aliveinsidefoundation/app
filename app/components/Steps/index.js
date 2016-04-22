@@ -14,6 +14,12 @@ export default class Steps extends React.Component {
       prevActive: this.props.settings.prevStatus() || true
     };
     this.props.settings.stepChange(this.props.settings.currentStep);
+
+    this.goStep = (n) => {
+      this._goToStep(n);
+    };
+
+    this.props.settings.goStep(this.goStep);
   }
 
   render() {

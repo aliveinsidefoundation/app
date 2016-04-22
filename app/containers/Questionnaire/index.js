@@ -26,7 +26,42 @@ class Questionnaire extends Component {
 
     this.spotify = new Spotify();
 
+    let stepChange = (step, next) => {
+      if (next) {
+        if (step === 1) {
+          this.setState({
+            userName: this.state.answers['q1']
+          });
+        }
+        if (step === 3) {
+          this.props.appActions.setName(this.state.answers['q3']);
+          this.props.appActions.setYear(new Date(this.state.answers['q4']).getFullYear());
+        }
+        if (this.validateStep(step)) {
+          next();
+        }
+      }
+    };
+
+    this.goToStep;
+
+    let settings = {
+      currentStep: 0,
+      stepChange: stepChange,
+      nextStatus: () => {
+        return true;
+      },
+      prevStatus: () => {
+        return true;
+      },
+      allowAllSteps: false,
+      goStep: (goStep) => {
+        this.goToStep = goStep;
+      }
+    };
+
     this.state = {
+      settings: settings,
       fix: false,
       help1: false,
       year: null,
@@ -38,16 +73,16 @@ class Questionnaire extends Component {
           },
           q2: {
             valid: ''
-          }
-        },
-        1: {},
-        2: {
+          },
           q3: {
             valid: ''
           },
           q4: {
             valid: ''
-          },
+          }
+        },
+        1: {},
+        2: {
           q5: {
             valid: true
           },
@@ -188,40 +223,11 @@ class Questionnaire extends Component {
   }
 
   render() {
-    let stepChange = (step, next) => {
-      if (next) {
-        if (step === 1) {
-          this.setState({
-            userName: this.state.answers['q1']
-          });
-        }
-        if (step === 3) {
-          this.props.appActions.setName(this.state.answers['q3']);
-          this.props.appActions.setYear(new Date(this.state.answers['q4']).getFullYear());
-        }
-        if (this.validateStep(step)) {
-          next();
-        }
-      }
-    };
-
-    let settings = {
-      currentStep: 0,
-      stepChange: stepChange,
-      nextStatus: () => {
-        return true;
-      },
-      prevStatus: () => {
-        return true;
-      },
-      allowAllSteps: false
-    };
-
     return (<div className="questionnaire-section">
               {this.props.app.loading ? <Loading/> : ''}
               <Header/>
               <div className="wrap-container">
-                <Steps settings={settings}>
+                <Steps settings={this.state.settings}>
                   <Step>
                     <div>
                       <span className="step-title">Introduce yourself</span>
@@ -250,11 +256,34 @@ class Questionnaire extends Component {
                           required
                         />
                       </div>
+                      <div className={'form-input ' + this.state.questions[0].q3.valid}>
+                        <label>What's elder name?*</label>
+                        <label className="error-label">Your name is required</label>
+                        <input
+                          type="text"
+                          ref="q3"
+                          name="q3"
+                          onChange={this._questionChange}
+                          required
+                        />
+                      </div>
+                      <div className={'form-input ' + this.state.questions[0].q4.valid}>
+                        <label>What is the elder's birth? Format: YYYY*</label>
+                        <label className="error-label">Your birth is required</label>
+                        <input
+                          type="date"
+                          ref="q4"
+                          name="q4"
+                          onChange={this._questionChange}
+                          required
+                        />
+                      </div>
                       <p className="terms">I agree to the <a href="#" target="_blank">
                       Terms & Conditions</a> and <a href="#" target="_blank">Privacy Policy
                       </a> of this website. I understand that the any information I provide will be
                       shared with the Alive Inside Foundation. This information will only be used
                       for X purposes and not shared publicy without your permission.</p>
+                      <div className="button create-playlist" onClick={this._quickList.bind(this)}>QUICK LIST</div>
                     </div>
                   </Step>
                   <Step>
@@ -272,29 +301,6 @@ class Questionnaire extends Component {
                   <Step>
                     <div>
                       <span className="step-title">Interview time! Ask your elder:</span>
-
-                      <div className={'form-input ' + this.state.questions[2].q3.valid}>
-                        <label>What's your name? (Elder's name)*</label>
-                        <label className="error-label">Your name is required</label>
-                        <input
-                          type="text"
-                          ref="q3"
-                          name="q3"
-                          onChange={this._questionChange}
-                          required
-                        />
-                      </div>
-                      <div className={'form-input ' + this.state.questions[2].q4.valid}>
-                        <label>What is your year of birth? Format: YYYY*</label>
-                        <label className="error-label">Your birth is required</label>
-                        <input
-                          type="date"
-                          ref="q4"
-                          name="q4"
-                          onChange={this._questionChange}
-                          required
-                        />
-                      </div>
                       <div className="form-input">
                         <label>Where were you born? </label>
                         <input
@@ -599,6 +605,12 @@ class Questionnaire extends Component {
         .then((response) => {
           callback(null, response);
         });
+    }
+  }
+
+  _quickList() {
+    if (this.validateStep(1)) {
+      this.goToStep(6);
     }
   }
 }
