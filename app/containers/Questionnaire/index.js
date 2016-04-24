@@ -255,8 +255,8 @@ class Questionnaire extends Component {
                         />
                       </div>
                       <div className={'form-input ' + this.state.questions[0].q3.valid}>
-                        <label>What's elder name?*</label>
-                        <label className="error-label">Your name is required</label>
+                        <label>What's your Elders' name?*</label>
+                        <label className="error-label">Your Elders' name is required</label>
                         <input
                           type="text"
                           ref="q3"
@@ -281,7 +281,9 @@ class Questionnaire extends Component {
                       </a> of this website. I understand that the any information I provide will be
                       shared with the Alive Inside Foundation. This information will only be used
                       for X purposes and not shared publicy without your permission.</p>
+                      <span className="quicklist-txt">Are you in a rush? Don't have time for the Memory Detective investigation?- Use Quick List!</span>
                       <div className="button quicklist" onClick={this._quickList.bind(this)}>QUICK LIST</div>
+                      <span className="quicklist-next-txt">Click Next- to find your elder their memory music!</span>
                     </div>
                   </Step>
                   <Step>
