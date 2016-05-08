@@ -7,7 +7,7 @@ export default class Header extends Component {
     return (
       <div id="header" className="header">
         <div className="wrap-container">
-          <a className="logo" href="/">
+          <a className="logo" href="http://aliveinside.org/">
             <img src="/images/logo.png"/>
           </a>
           <a className="button create-playlist" href="/#/questionnaire">
