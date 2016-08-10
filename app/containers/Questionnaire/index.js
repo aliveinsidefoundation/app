@@ -282,9 +282,9 @@ class Questionnaire extends Component {
                       </a> of this website. I understand that the any information I provide will be
                       shared with the Alive Inside Foundation. This information will only be used
                       for X purposes and not shared publicy without your permission.</p>
+                      <div className="button quicklist" onClick={this._nextButton}>Next Step</div>
                       <span className="quicklist-txt">Are you in a rush? Don't have time for the Memory Detective investigation?- Use Quick List!</span>
                       <div className="button quicklist" onClick={this._quickList.bind(this)}>QUICK LIST</div>
-                      <div className="button quicklist" onClick={this._nextButton}>Next Step</div>
                     </div>
                   </Step>
                   <Step>

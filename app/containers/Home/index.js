@@ -20,8 +20,8 @@ class Home extends React.Component {
           <div className="wrap-container">
             <div className="home-intro">
               <div className="intro-txt">
-                <span className="txt-intro-title">Welcome Life Soundtrack Detectives!</span>
-                <span className="txt-intro">It's time to start waking memories! Bring aliveness and identity back to our elders through your human connection and their Music!</span>
+                <span className="txt-intro-title">Welcome Memory Detective! It's time to start waking memories!</span>
+                <span className="txt-intro">Bring aliveness and identity back to your elders through human connection and Music!</span>
                 <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A PLAYLiST</a>
               </div>
               <img src="/images/home-intro.jpg"/>
@@ -42,7 +42,7 @@ class Home extends React.Component {
                 <div className="how-item">
                   <img src="/images/numbers-03.png"/>
                   <span>SAVE TO SPOTIFY</span>
-                  <p>You can save the playlist to Spotify for easy access and editing. With a Premium Spotify account, you can even access the playlist offline. If you are a youth outreach group- <a href="http://www.aliveinside.org/outreach">we can help!</a></p>
+                  <p>You can save the playlist to Spotify for easy access and editing. With a Premium Spotify account, you can even access the playlist offline. If you are a youth outreach group-</p><a href="http://www.aliveinside.org/outreach">we can help!</a>
                 </div>
               </div>
             </div>
@@ -50,7 +50,7 @@ class Home extends React.Component {
               <div className="whats-item back-blue">
                 <img src="/images/brain-01.png"/>
                 <span>What is a Life Soundtrack Detective?</span>
-                <p>You are! As a Life Soundtrack Detective you are on a mission to interview your elder and discover the music they connect with most deeply. You will help your elder re­member their fondest moments with your presence and caring energy.</p>
+                <p>You are! As Memory Detective you are on a mission to interview your elder and discover the music they connect to most deeply. You will help your elder re­member their fondest moments with your presence and caring energy.</p>
               </div>
               <div className="whats-item back-organge">
                 <img src="/images/brain-02.png"/>

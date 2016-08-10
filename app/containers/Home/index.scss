@@ -156,6 +156,18 @@
             font-size: 14px;
           }
         }
+
+        a {
+          font-family: Signika;
+          font-size: 16px;
+          color: #585858;
+          line-height: 26px;
+          font-weight: 200;
+
+          @media (max-width: 768px) {
+            font-size: 14px;
+          }
+        }
       }
     }
   }
