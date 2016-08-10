@@ -29,7 +29,7 @@ class About extends React.Component {
               </div>
             </div>
             <div className="about-message">
-              <span>Support the movement of remembering!</span>
+              <span>Support the movement of aliveness!</span>
               <a className="button donate" href="http://www.aliveinside.org/donate/" target="_blank">DONATE NOW</a>
             </div>
           </div>

@@ -23,6 +23,7 @@ class Questionnaire extends Component {
 
     this._questionChange = this._questionChange.bind(this);
     this._multiChange = this._multiChange.bind(this);
+    this._nextButton = this._nextButton.bind(this);
 
     this.spotify = new Spotify();
 
@@ -283,7 +284,7 @@ class Questionnaire extends Component {
                       for X purposes and not shared publicy without your permission.</p>
                       <span className="quicklist-txt">Are you in a rush? Don't have time for the Memory Detective investigation?- Use Quick List!</span>
                       <div className="button quicklist" onClick={this._quickList.bind(this)}>QUICK LIST</div>
-                      <span className="quicklist-next-txt">Click Next- to find your elder their memory music!</span>
+                      <div className="button quicklist" onClick={this._nextButton}>Next Step</div>
                     </div>
                   </Step>
                   <Step>
@@ -616,6 +617,17 @@ class Questionnaire extends Component {
       this.props.appActions.setName(this.state.answers['q3']);
       this.props.appActions.setYear(new Date(this.state.answers['q4']).getFullYear());
       this.goToStep(6);
+    }
+  }
+
+  _nextButton() {
+    if (this.validateStep(1)) {
+      this.setState({
+        userName: this.state.answers['q1']
+      });
+      this.props.appActions.setName(this.state.answers['q3']);
+      this.props.appActions.setYear(new Date(this.state.answers['q4']).getFullYear());
+      this.goToStep(1);
     }
   }
 }

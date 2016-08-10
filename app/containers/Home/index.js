@@ -20,8 +20,8 @@ class Home extends React.Component {
           <div className="wrap-container">
             <div className="home-intro">
               <div className="intro-txt">
-                <span className="txt-intro-title">Welcome Memory Detective! It's time to start waking memories!</span>
-                <span className="txt-intro">Bring music and identity back to our elders through your human connection and a beautiful playlist curated by you.</span>
+                <span className="txt-intro-title">Welcome Life Soundtrack Detectives!</span>
+                <span className="txt-intro">It's time to start waking memories! Bring aliveness and identity back to our elders through your human connection and their Music!</span>
                 <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A PLAYLiST</a>
               </div>
               <img src="/images/home-intro.jpg"/>
@@ -42,15 +42,15 @@ class Home extends React.Component {
                 <div className="how-item">
                   <img src="/images/numbers-03.png"/>
                   <span>SAVE TO SPOTIFY</span>
-                  <p>You can save the playlist to Spotify for easy access and editing. With a Premium Spotify account, you can even access the playlist offline.</p>
+                  <p>You can save the playlist to Spotify for easy access and editing. With a Premium Spotify account, you can even access the playlist offline. If you are a youth outreach group- <a href="http://www.aliveinside.org/outreach">we can help!</a></p>
                 </div>
               </div>
             </div>
             <div className="how-whats">
               <div className="whats-item back-blue">
                 <img src="/images/brain-01.png"/>
-                <span>What is a Memory Detective?</span>
-                <p>You are! As a Memory Detective you are on a memory mission by facilitating an interview with an elder to discover what music they connect with most deeply. You will help your elder re­member their fondest moments and you will do this with your presence and caring energy.</p>
+                <span>What is a Life Soundtrack Detective?</span>
+                <p>You are! As a Life Soundtrack Detective you are on a mission to interview your elder and discover the music they connect with most deeply. You will help your elder re­member their fondest moments with your presence and caring energy.</p>
               </div>
               <div className="whats-item back-organge">
                 <img src="/images/brain-02.png"/>
@@ -59,7 +59,7 @@ class Home extends React.Component {
               </div>
             </div>
             <div className="home-message">
-              <span>Support the movement of remembering!</span>
+              <span>Support the movement of aliveness!</span>
               <a className="button create-playlist" href="http://www.aliveinside.org/donate/" target="_blank">DONATE NOW</a>
             </div>
           </div>
