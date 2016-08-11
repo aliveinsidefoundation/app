@@ -20,7 +20,8 @@ class Home extends React.Component {
           <div className="wrap-container">
             <div className="home-intro">
               <div className="intro-txt">
-                <span className="txt-intro-title">Welcome Memory Detective! It's time to start waking memories!</span>
+                <span className="txt-intro-title">Welcome Memory Detectives!</span>
+                <span className="txt-intro-title-2">It's time to start waking memories!</span>
                 <span className="txt-intro">Bring aliveness and identity back to your elders through human connection and Music!</span>
                 <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A PLAYLiST</a>
               </div>

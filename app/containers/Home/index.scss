@@ -42,6 +42,25 @@
       }
     }
 
+    .txt-intro-title-2 {
+      font-size: 18px;
+      color: #FFFFFF;
+      line-height: 26px;
+      display: block;
+      text-align: center;
+      margin: 0 0 0 0;
+      font-family: Signika;
+      font-weight: 400;
+
+      @media (max-width: 768px) {
+        margin: 0 0 0 0;
+      }
+
+      @media (max-width: 401px) {
+        font-size: 14px;
+      }
+    }
+
     .txt-intro {
       font-family: 'Shadows Into Light Two', cursive;
       font-size: 34px;
