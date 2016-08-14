@@ -20,7 +20,7 @@ class Home extends React.Component {
           <div className="wrap-container">
             <div className="home-intro">
               <div className="intro-txt">
-                <span className="txt-intro-title">Welcome Memory Detectives!</span>
+                <span className="txt-intro-title">Welcome to the Alive Inside App!</span>
                 <span className="txt-intro-title-2">It's time to start waking memories!</span>
                 <span className="txt-intro">Bring aliveness and identity back to your elders through human connection and Music!</span>
                 <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A PLAYLiST</a>
@@ -50,8 +50,8 @@ class Home extends React.Component {
             <div className="how-whats">
               <div className="whats-item back-blue">
                 <img src="/images/brain-01.png"/>
-                <span>What is a Life Soundtrack Detective?</span>
-                <p>You are! As Memory Detective you are on a mission to interview your elder and discover the music they connect to most deeply. You will help your elder re­member their fondest moments with your presence and caring energy.</p>
+                <span>What is The Alive Inside App?</span>
+                <p>The Alive Inside App is a tool to help you discover the music that connects your elder to their deepest emotions and identity. You will re-awaken Aliveness with your presence and caring energy.</p>
               </div>
               <div className="whats-item back-organge">
                 <img src="/images/brain-02.png"/>
