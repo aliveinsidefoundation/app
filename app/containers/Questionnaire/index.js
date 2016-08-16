@@ -283,7 +283,7 @@ class Questionnaire extends Component {
                       shared with the Alive Inside Foundation. This information will only be used
                       for X purposes and not shared publicy without your permission.</p>
                       <div className="button quicklist" onClick={this._nextButton}>Next Step</div>
-                      <span className="quicklist-txt">Are you in a rush? Don't have time for the Memory Detective investigation?- Use Quick List!</span>
+                      <span className="quicklist-txt">Are you in a rush? Don't have time for the Alive Inside Detective investigation?- Use Quick List!</span>
                       <div className="button quicklist" onClick={this._quickList.bind(this)}>QUICK LIST</div>
                     </div>
                   </Step>
@@ -292,7 +292,7 @@ class Questionnaire extends Component {
                       <span className="step-title">
                         Nice to meet you, {this.state.userName}!
                       </span>
-                      <span>You are an official Alive Inside Memory Detective! Now that we know who you are, we
+                      <span>You are an official Alive Inside Detective! Now that we know who you are, we
                       want to get to know your elder.</span>
                       <p>The answers to the questions will generate a playlist, but don’t worry if
                       you aren’t able to answer every question. That’s OK!  </p>
