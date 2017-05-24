@@ -33,17 +33,17 @@ class Home extends React.Component {
                 <div className="how-item">
                   <img src="/images/numbers-01.png"/>
                   <span>INTERVIEW YOUR ELDER</span>
-                  <p>Sit down with your elder and walk through our simple interview. Record their answers and we will do the rest!</p>
+                  <p>Sit down with your elder and do our simple interview. Record their answers and let the APP do the rest!</p>
                 </div>
                 <div className="how-item">
                   <img src="/images/numbers-02.png"/>
                   <span>REVIEW THE PLAYLIST</span>
-                  <p>Your answers will magically create a list of songs that are meaningful to your elder. As you listen to the songs with your elder, you can record their stories and reactions.</p>
+                  <p>Your answers magically create a list of songs from your elder's time. As you listen to the songs and edit the list, you can record your elder's stories and reactions.</p>
                 </div>
                 <div className="how-item">
                   <img src="/images/numbers-03.png"/>
                   <span>SAVE TO SPOTIFY</span>
-                  <p>You can save the playlist to Spotify for easy access and editing. With a Premium Spotify account, you can even access the playlist offline. If you are a youth outreach group-</p><a href="http://www.aliveinside.org/outreach">we can help!</a>
+                  <p>The list saves to Spotify for easy access and editing. With a Premium Spotify account, you can even access the music offline. If you are a youth outreach group-</p><a href="http://www.aliveinside.org/outreach">we can help!</a>
                 </div>
               </div>
             </div>
