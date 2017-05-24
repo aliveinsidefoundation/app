@@ -22,7 +22,7 @@ class Home extends React.Component {
               <div className="intro-txt">
                 <span className="txt-intro-title">Welcome to the ALIVE INSIDE APP!</span>
                 <span className="txt-intro-title-2">Let's wake some memories!</span>
-                <span className="txt-intro">Let's give our Elders Human Connection and Music!</span>
+                <span className="txt-intro">Let's give our Elders the Music and Human Connection they need!</span>
                 <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A SongLiST</a>
               </div>
               <img src="/images/home-intro.jpg"/>
@@ -38,12 +38,12 @@ class Home extends React.Component {
                 <div className="how-item">
                   <img src="/images/numbers-02.png"/>
                   <span>REVIEW THE SONGLIST</span>
-                  <p>Your answers magically create a list of songs from your elder's time. As you listen to the songs and edit the list, you can record your elder's stories and reactions.</p>
+                  <p>Your answers magically create a list of songs from your elder's life. You can listen to the songs and edit the list, and record your elder's stories and reactions.</p>
                 </div>
                 <div className="how-item">
                   <img src="/images/numbers-03.png"/>
                   <span>SAVE TO SPOTIFY</span>
-                  <p>The list saves to Spotify for easy access and editing. With a Premium Spotify account, you can even access the music offline. We want a million kids helping a million elders-</p><a href="http://www.aliveinside.org/aiu">Join Us!</a>
+                  <p>The list saves to Spotify for easy access and editing. With a Premium Spotify account, you can access the music offline. We need a million kids to-</p><a href="http://www.aliveinside.org/aiu">help a million elders!</a>
                 </div>
               </div>
             </div>
@@ -51,16 +51,16 @@ class Home extends React.Component {
               <div className="whats-item back-blue">
                 <img src="/images/brain-01.png"/>
                 <span>What is The Alive Inside App?</span>
-                <p>The Alive Inside App is a tool to help you discover the music that connects your elder to their deepest emotions and identity. You will re-awaken Aliveness with your presence and caring energy.</p>
+                <p>The Alive Inside App is a free tool to find the music that connects to your elder's deepest emotions and identity. You can re-awaken Aliveness with your caring energy.</p>
               </div>
               <div className="whats-item back-organge">
                 <img src="/images/brain-02.png"/>
                 <span>Why music?</span>
-                <p>Music affects the brain and body unlike anything else.It accesses multiple parts of the brain, and miraculously stays strong, almost to the  end. Music and Human Connection are unparalleled and often ignored tools for restoring memory and identity.</p>
+                <p>Music affects the brain and body unlike anything else.It accesses multiple parts of the brain, and miraculously stays strong, almost to the  end. Music and Human Connection can restore memory and identity!</p>
               </div>
             </div>
             <div className="home-message">
-              <span>Support the movement of aliveness!</span>
+              <span>Support our Movement!</span>
               <a className="button create-playlist" href="http://www.aliveinside.org/donate/" target="_blank">DONATE NOW</a>
             </div>
           </div>
