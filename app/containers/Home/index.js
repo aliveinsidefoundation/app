@@ -20,10 +20,10 @@ class Home extends React.Component {
           <div className="wrap-container">
             <div className="home-intro">
               <div className="intro-txt">
-                <span className="txt-intro-title">Welcome to the Alive Inside App!</span>
-                <span className="txt-intro-title-2">It's time to wake memories!</span>
-                <span className="txt-intro">Give your Elders human connection and Music!</span>
-                <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A PLAYLiST</a>
+                <span className="txt-intro-title">Welcome to the ALIVE INSIDE APP!</span>
+                <span className="txt-intro-title-2">Let's wake some memories!</span>
+                <span className="txt-intro">Let's give our Elders Human Connection and Music!</span>
+                <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A SongLiST</a>
               </div>
               <img src="/images/home-intro.jpg"/>
             </div>
@@ -37,13 +37,13 @@ class Home extends React.Component {
                 </div>
                 <div className="how-item">
                   <img src="/images/numbers-02.png"/>
-                  <span>REVIEW THE PLAYLIST</span>
+                  <span>REVIEW THE SONGLIST</span>
                   <p>Your answers magically create a list of songs from your elder's time. As you listen to the songs and edit the list, you can record your elder's stories and reactions.</p>
                 </div>
                 <div className="how-item">
                   <img src="/images/numbers-03.png"/>
                   <span>SAVE TO SPOTIFY</span>
-                  <p>The list saves to Spotify for easy access and editing. With a Premium Spotify account, you can even access the music offline. If you are a youth outreach group-</p><a href="http://www.aliveinside.org/outreach">we can help!</a>
+                  <p>The list saves to Spotify for easy access and editing. With a Premium Spotify account, you can even access the music offline. We want a million kids helping a million elders-</p><a href="http://www.aliveinside.org/aiu">Join Us!</a>
                 </div>
               </div>
             </div>
