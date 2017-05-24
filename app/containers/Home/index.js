@@ -21,8 +21,8 @@ class Home extends React.Component {
             <div className="home-intro">
               <div className="intro-txt">
                 <span className="txt-intro-title">Welcome to the Alive Inside App!</span>
-                <span className="txt-intro-title-2">It's time to start waking memories!</span>
-                <span className="txt-intro">Bring aliveness and identity back to your elders through human connection and Music!</span>
+                <span className="txt-intro-title-2">It's time to wake memories!</span>
+                <span className="txt-intro">Give your Elders human connection and Music!</span>
                 <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A PLAYLiST</a>
               </div>
               <img src="/images/home-intro.jpg"/>
