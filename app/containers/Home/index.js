@@ -38,7 +38,7 @@ class Home extends React.Component {
                 <div className="how-item">
                   <img src="/images/numbers-02.png"/>
                   <span>REVIEW THE PLAYLIST</span>
-                  <p>Your answers to our interview questions will magically create a playlist of songs that are familiar to your elder. As you listen to the songs with your elder, you can record their stories and reactions.</p>
+                  <p>Your answers will magically create a list of songs that are meaningful to your elder. As you listen to the songs with your elder, you can record their stories and reactions.</p>
                 </div>
                 <div className="how-item">
                   <img src="/images/numbers-03.png"/>
