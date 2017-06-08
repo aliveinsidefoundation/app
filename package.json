@@ -8,7 +8,7 @@
     "build": "NODE_ENV=production ./node_modules/.bin/webpack --config ./webpack.config.production.js --progress --colors",
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "prod": "NODE_ENV=production node server.js",
-    "postinstall": "webpack -p"
+    "postinstall": "webpack "
   },
   "author": "Fusenlabs.co",
   "license": "ISC",
