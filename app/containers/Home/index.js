@@ -20,10 +20,10 @@ class Home extends React.Component {
           <div className="wrap-container">
             <div className="home-intro">
               <div className="intro-txt">
-                <span className="txt-intro-title">Welcome to the ALIVE INSIDE APP!</span>
-                <span className="txt-intro-title-2">Let's wake some memories!</span>
-                <span className="txt-intro">Let's give your Elders the Music and Human Connection they need!</span>
-                <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A SongLiST</a>
+                <span className="txt-intro ">Welcome to the ALIVE INSIDE APP!</span>
+                <span className="txt-intro-title-2"></span>
+                <span className="txt-intro2 ">Give your Elders the Music and Connection they need!</span>
+                <a className="button create-playlist" href="/#/questionnaire"><i className="icon-music"></i> CREATE A SongList</a>
               </div>
               <img src="/images/home-intro.jpg"/>
             </div>

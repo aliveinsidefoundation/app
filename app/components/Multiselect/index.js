@@ -16,6 +16,7 @@ export default class Multiselect extends React.Component {
       selected: {},
       disabledMax: false,
       placeholder: this.props.placeholder || ''
+     
     };
     this.getSuggestions = this.getSuggestions.bind(this);
     this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
@@ -26,15 +27,19 @@ export default class Multiselect extends React.Component {
   render() {
     let inputAttributes = {
       disabled: this.state.disabledMax,
-      placeholder: this.state.placeholder
+      placeholder: this.state.placeholder,
+      
     };
+    
     return (<div className="multiselect-component" disabled>
               <Autosuggest
                 inputAttributes={inputAttributes}
                 suggestions={this.getSuggestions}
+               
                 onSuggestionSelected={this.onSuggestionSelected}
                 suggestionRenderer={this.suggestionRenderer}
                 suggestionValue={this.getSuggestionValue}
+                 
                 id={this.props.name}
               />
               <div className="auto-mark"> <i className="icon-menu"/> </div>
@@ -58,10 +63,10 @@ export default class Multiselect extends React.Component {
     }
   }
 
-  getSuggestions(input, callback) {
-    this.props.loadOptions(input, callback);
+ 
+ getSuggestions(input, callback) {
+     this.props.loadOptions(input, callback);
   }
-
   onSuggestionSelected(suggestion, event) {
     event.preventDefault();
     let newItem = this.state.selected;

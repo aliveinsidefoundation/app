@@ -5,10 +5,18 @@
  */
 import {Client, TrackHandler, PlaylistHandler, ArtistHandler, UserHandler} from 'spotify-sdk';
 
+
+
+
 export default class Spotify {
   constructor(spotify = {client: '', token: ''}) {
     this.client = Client.instance;
     this.client.settings = {};
+
+
+
+    
+
     this.track = new TrackHandler();
     this.artist = new ArtistHandler();
   }

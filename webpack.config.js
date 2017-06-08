@@ -17,7 +17,10 @@ module.exports = ({
     alias: {
       'appConfig': '../../env/devel-config.js'
     },
-    extensions: ['', '.js']
+    extensions: ['', '.js'],
+
+
+    //End of Addittions
   },
   module: {
     loaders: [{

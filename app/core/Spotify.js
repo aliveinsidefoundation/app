@@ -13,7 +13,8 @@ export default class Spotify {
       clientId: appConfig.SPOTIFY_CLIENT,
       secretId: appConfig.SPOTIFY_TOKEN,
       scopes: 'playlist-modify-public playlist-modify-private',
-      redirect_uri: appConfig.SPOTIFY_REDIRECT
+      redirect_uri: appConfig.SPOTIFY_REDIRECT,
+      token:localStorage.magic_token
     };
     this.track = new TrackHandler();
     this.artist = new ArtistHandler();
@@ -25,6 +26,8 @@ export default class Spotify {
   }
 
   getTrack(id) {
+    //this.login();
+  
     return this.track.get(id);
   }
 
@@ -276,6 +279,14 @@ export default class Spotify {
     });
   }
 
+
+
+
+
+
+
+
+
   save(tracks, playlistName) {
     return new Promise((resolve) => {
       this.client.login((url) => {
@@ -287,6 +298,7 @@ export default class Spotify {
         // :D
         window.addEventListener('storage', (data) => {
           if (data.key === 'magic_token') {
+
             this.client.token = data.newValue;
 
             this.user.me().then((userEntity) => {
@@ -300,10 +312,35 @@ export default class Spotify {
             }).catch(() => {
               resolve({ ok: false });
             });
+
+
+          }
+        });
+      });
+
+    });
+  }
+
+//======= New Code for Login
+    login() {
+    return new Promise((resolve, reject) => {
+      this.client.login((url) => {
+        window.open(
+          url,
+          'Spotify',
+          'menubar=no,location=no,resizable=yes,scrollbars=yes,status=no,width=400,height=500'
+        );
+        // :D
+        window.addEventListener('storage', (data) => {
+          if (data.key === 'magic_token') {
+            resolve(data.newValue);
+             this.client.token = data.newValue;  //test with this value
           }
         });
       });
     });
+    
   }
 
+//====== New Code for Login
 }

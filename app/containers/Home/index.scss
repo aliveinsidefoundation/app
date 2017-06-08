@@ -3,6 +3,13 @@
 /*
  * Home
  */
+ .mytop{
+   margin-top:50px;
+ }
+
+ .mybase{
+   margin-top:20px;
+ }
 
 .home {
   .home-intro {
@@ -69,7 +76,26 @@
       text-align: center;
       display: block;
       width: 80%;
-      margin: 26px auto;
+      margin: 85px auto;
+
+      @media (max-width: 500px) {
+        font-size: 22px;
+        line-height: 27px;
+        margin: 11px auto;
+      }
+    }
+
+
+    .txt-intro2 {
+      font-family: 'Shadows Into Light Two', cursive;
+      font-size: 34px;
+      color: #FFFFFF;
+      line-height: 49px;
+      text-align: center;
+      display: block;
+      width: 100%;
+      margin-top: 200px ;
+      margin-bottom:20px;
 
       @media (max-width: 500px) {
         font-size: 22px;

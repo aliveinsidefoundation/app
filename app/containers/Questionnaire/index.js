@@ -19,7 +19,7 @@ import '!style!css!sass!./index.scss';
 class Questionnaire extends Component {
 
   constructor(props) {
-    super(props);
+    super(props);   
 
     this._questionChange = this._questionChange.bind(this);
     this._multiChange = this._multiChange.bind(this);
@@ -158,7 +158,106 @@ class Questionnaire extends Component {
   componentDidMount() {
     // once history is available, store it on /utils/history module.
     historyHandler.set(this.props.history);
+
+    //New Code
+   this.spotify.login(); //To login to authomatically on page load
+       //New Code
   }
+
+
+  // New Insert
+
+
+
+                     
+
+  _multiChange(value, name) {
+    let answers = this.state.answers;
+    answers[name] = value;
+    this.setState({
+      answers: answers
+    });
+  }
+
+  _questionChange(e) {
+    let answers = this.state.answers;
+    answers[e.target.name] = e.target.value;
+    this.setState({
+      answers: answers
+    });
+  }
+
+  _finish() {
+    this.setState({
+      fix: true
+    });
+    let year = new Date(this.state.answers.q4);
+    this.props.qActions.end(this.state.answers, year.getFullYear());
+  }
+
+
+
+  _loadOptions(input, callback) {
+    if (input.length > 3) {
+      this.spotify.getTracks({market: 'US', limit: 5, q: input})
+        .then(response => {
+          return response.map(item => {
+            return {
+              id: item.id,
+              name: `${item.name} - ${item.artists[0].name}`,
+              artist: item.artists.first()
+            };
+          });
+        })
+        .then((response) => {
+          callback(null, response);
+        
+        });
+    }
+  }
+
+  _loadArtists(input, callback) {
+    if (input.length > 3) {
+      this.spotify.getArtists({market: 'US' ,limit: 5, q: input})
+        .then(response => {
+          return response.map(item => {
+            return {id: item.id, name: `${item.name}`};
+          });
+        })
+        .then((response) => {
+          callback(null, response);
+        });
+    }
+  }
+
+  _quickList() {
+    if (this.validateStep(1)) {
+      this.setState({
+        userName: this.state.answers['q1']
+      });
+      this.props.appActions.setName(this.state.answers['q3']);
+      this.props.appActions.setYear(new Date(this.state.answers['q4']).getFullYear());
+      this.goToStep(6);
+    }
+  }
+
+  _nextButton() {
+    if (this.validateStep(1)) {
+      this.setState({
+        userName: this.state.answers['q1']
+      });
+      this.props.appActions.setName(this.state.answers['q3']);
+      this.props.appActions.setYear(new Date(this.state.answers['q4']).getFullYear());
+      this.goToStep(1);
+    }
+  }
+  //new code
+ login(e){
+   this.spotify.login();
+   e.preventDefault();
+    this.props.history.push('/');
+ }
+  //New Insert End=====
 
   ages(year) {
     return {
@@ -221,15 +320,23 @@ class Questionnaire extends Component {
     );
   }
 
-  render() {
-    return (<div className="questionnaire-section">
+
+  
+ render() {
+    return (
+      <div className="questionnaire-section">
               {this.props.app.loading ? <Loading/> : ''}
               <Header/>
               <div className="wrap-container">
                 <Steps settings={this.state.settings}>
                   <Step>
                     <div>
-                      <span className="step-title">Introduce yourself</span>
+                    
+                      
+                      <span className="step-title"><h1>Step 1. Log in to Spotify</h1></span>
+                        
+                         <div>{localStorage.magic_token ? "" : <div  className="button quicklist" onClick={this.login.bind(this)}>Login to Spotify </div> }</div>
+                       <span className="step-title"><h1>Step 2. Introduce Yourself</h1></span>
                       <div className={'form-input ' + this.state.questions[0].q1.valid}>
                         <label>Whats your name?*</label>
                         <label className="error-label">Your name is required</label>
@@ -282,9 +389,16 @@ class Questionnaire extends Component {
                       </a> of this website. I understand that the any information I provide will be
                       shared with the Alive Inside Foundation. This information will only be used
                       for X purposes and not shared publicy without your permission.</p>
-                      <div className="button quicklist" onClick={this._nextButton}>Next Step</div>
+
+                      <div>{localStorage.magic_token ? <div className="button quicklist" onClick={this._nextButton}>Next Step</div> : <div  className="button quicklist" onClick={this.login.bind(this)}>Login to Spotify </div> }</div>
+
+                 
+
                       <span className="quicklist-txt">Are you in a rush? Don't have time for the Alive Inside Detective investigation?- Use Quick List!</span>
-                      <div className="button quicklist" onClick={this._quickList.bind(this)}>QUICK LIST</div>
+                      
+                       <div>{localStorage.magic_token ? <div className="button quicklist" onClick={this._quickList.bind(this)}>QUICK LIST</div>: <div  className="button quicklist" onClick={this.login.bind(this)}>Login to Spotify</div> }</div>
+
+                      
                     </div>
                   </Step>
                   <Step>
@@ -482,7 +596,7 @@ class Questionnaire extends Component {
                           <option value="Bahai ">Bahai </option>
                           <option value="Other">Other</option>
                         </select>
-                      </div>
+            </div>
                       <div className="form-input">
                         <label>
                           What musicians did your parents listen to when you were growing up?
@@ -496,6 +610,8 @@ class Questionnaire extends Component {
                       </div>
                     </div>
                   </Step>
+
+                  
                   <Step>
                     <div>
                       <span className="step-title">Music memories. Ask your elder:</span>
@@ -550,86 +666,21 @@ class Questionnaire extends Component {
                   </Step>
                 </Steps>
               </div>
-            </div>);
-  }
+            </div>
 
-  _multiChange(value, name) {
-    let answers = this.state.answers;
-    answers[name] = value;
-    this.setState({
-      answers: answers
-    });
-  }
 
-  _questionChange(e) {
-    let answers = this.state.answers;
-    answers[e.target.name] = e.target.value;
-    this.setState({
-      answers: answers
-    });
-  }
+      );
+ }
 
-  _finish() {
-    this.setState({
-      fix: true
-    });
-    let year = new Date(this.state.answers.q4);
-    this.props.qActions.end(this.state.answers, year.getFullYear());
-  }
+}
 
-  _loadOptions(input, callback) {
-    if (input.length > 3) {
-      this.spotify.getTracks({market: 'US', limit: 5, q: input})
-        .then(response => {
-          return response.map(item => {
-            return {
-              id: item.id,
-              name: `${item.name} - ${item.artists[0].name}`,
-              artist: item.artists.first()
-            };
-          });
-        })
-        .then((response) => {
-          callback(null, response);
-        });
-    }
-  }
 
-  _loadArtists(input, callback) {
-    if (input.length > 3) {
-      this.spotify.getArtists({market: 'US', limit: 5, q: input})
-        .then(response => {
-          return response.map(item => {
-            return {id: item.id, name: `${item.name}`};
-          });
-        })
-        .then((response) => {
-          callback(null, response);
-        });
-    }
-  }
 
-  _quickList() {
-    if (this.validateStep(1)) {
-      this.setState({
-        userName: this.state.answers['q1']
-      });
-      this.props.appActions.setName(this.state.answers['q3']);
-      this.props.appActions.setYear(new Date(this.state.answers['q4']).getFullYear());
-      this.goToStep(6);
-    }
-  }
-
-  _nextButton() {
-    if (this.validateStep(1)) {
-      this.setState({
-        userName: this.state.answers['q1']
-      });
-      this.props.appActions.setName(this.state.answers['q3']);
-      this.props.appActions.setYear(new Date(this.state.answers['q4']).getFullYear());
-      this.goToStep(1);
-    }
-  }
+function mapDispatchToProps(dispatch) {
+  return {
+    qActions: bindActionCreators(questionnaireActions, dispatch),
+    appActions: bindActionCreators(appActions, dispatch)
+  };
 }
 
 function mapPropsToState(state) {
@@ -638,11 +689,6 @@ function mapPropsToState(state) {
   }
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    qActions: bindActionCreators(questionnaireActions, dispatch),
-    appActions: bindActionCreators(appActions, dispatch)
-  };
-}
+
 
 export default connect(mapPropsToState, mapDispatchToProps)(Questionnaire);
