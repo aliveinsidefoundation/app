@@ -13,7 +13,7 @@ export default class Spotify {
       clientId: appConfig.SPOTIFY_CLIENT,
       secretId: appConfig.SPOTIFY_TOKEN,
       scopes: 'playlist-modify-public playlist-modify-private',
-      redirect_uri: appConfig.SPOTIFY_REDIRECT,
+      redirect_uri: 'http://localhost:8080/login',
       token:localStorage.magic_token
     };
     this.track = new TrackHandler();
