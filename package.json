@@ -4,7 +4,7 @@
   "description": "A boilerplate to fast development under React-Redux tech.",
   "main": "app/index",
   "scripts": {
-    "start": " node ./app/index.js",
+    "start": " node app/index.js",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack --config ./webpack.config.production.js --progress --colors",
     "gh-deploy": "node ./bin/gh-deploy.js",
     "deploy": "npm run gh-deploy",
