@@ -4,7 +4,7 @@
  * getTracks({years:[1990-1991], market: 'AR', limit: 5, q: '']})
  */
 import {Client, TrackHandler, PlaylistHandler, ArtistHandler, UserHandler} from 'spotify-sdk';
-import appConfig from 'appConfig';
+import appConfig  from 'appConfig';
 
 export default class Spotify {
   constructor(spotify = {client: '', token: ''}) {
