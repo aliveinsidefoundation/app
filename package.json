@@ -4,10 +4,11 @@
   "description": "A boilerplate to fast development under React-Redux tech.",
   "main": "app/index",
   "scripts": {
-    
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "prod": "NODE_ENV=production node server.js",
-    "postinstall": "webpack -p"
+    "start": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js --hot --progress --colors --watch --content-base public/",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config ./webpack.config.production.js --progress --colors",
+    "gh-deploy": "node ./bin/gh-deploy.js",
+    "deploy": "npm run gh-deploy",
+    "predeploy": "npm run build"
   },
   "author": "Fusenlabs.co",
   "license": "ISC",
@@ -43,6 +44,6 @@
     "redux-thunk": "^2.0.1",
     "spotify-sdk": "^0.1.1",
     "whatwg-fetch": "latest",
-     "webpack": "^1.12.9"
+      "webpack-dev-server": "^1.14.1"
   }
 }
